@@ -1,0 +1,8 @@
+package dynamic_beat_3;
+
+//인트로 뮤직을 삽입하기 위한클래스
+//프로젝트 우클릭 - Build Path - Configuration Build Path - Add External JARs에서 라이브러리 추가한다.
+//추가한 라이브러리는 'Referenced Libraries'에 삽입된다.
+public class Music extends Thread{
+	
+}

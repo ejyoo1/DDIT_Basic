@@ -1,0 +1,9 @@
+
+public class Qu2_6 {
+	publis static void main(String[] args){
+		int number = 30;
+		char ch = 'C';
+		
+		System.out.println(ch);
+	}
+}

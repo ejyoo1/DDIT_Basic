@@ -1,0 +1,18 @@
+package dynamic_beat_3;
+
+import java.io.BufferedInputStream;
+
+import javazoom.jl.player.Player;
+
+//인트로 뮤직을 삽입하기 위한클래스
+//프로젝트 우클릭 - Build Path - Configuration Build Path - Add External JARs에서 라이브러리 추가한다.
+//추가한 라이브러리는 'Referenced Libraries'에 삽입된다.
+//프로그램 안의 하나의 작은 프로그램이라고 생각하면 된다.
+public class Music extends Thread{
+	private Player player;//받은 라이브러리 중 하나임.
+	private boolean isLoop;//현재 곡이 무한반복인지 한번만 재생되어 꺼지는지 그에대한 설정임.
+	private file file;
+	private fileInputStream fis;
+	private BufferedInputStream bis;
+	
+}

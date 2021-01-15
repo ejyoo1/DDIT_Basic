@@ -1,0 +1,36 @@
+package c_statement;
+
+import java.util.Random;
+
+public class Baseball {
+	public static void main(String[] args){
+		/*
+		 * 135
+		 * 123 : 1S 1B 1O
+		 * 531 : 1S 2B 0O
+		 * 321 : 0S 2B 1O
+		 * 
+		 * 스트라이크 : 1이라는 숫자와 자리수도같을 때
+		 * 볼 : 3이라는 숫자가 있지만 자리수가 다름
+		 * 아웃 : 아예 없을 경우
+		 * */
+		//1부터 9까지의 숫자를 3개 발생시키고 겹치지 않게
+		int[] random = new int[3];
+		for(int i = 0; i<3 ; i++){
+			random[i] = (int)(Math.random()*9)+1;
+		}
+		
+		while(true){
+			if(random[1]==random[2]){
+				
+			}
+		}
+		
+		for(int i = 0; i<3 ; i++){
+			System.out.print(random[i]+"\t");
+			
+		}
+		
+		
+	}
+}

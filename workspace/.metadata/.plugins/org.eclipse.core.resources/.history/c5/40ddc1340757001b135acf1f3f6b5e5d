@@ -1,0 +1,14 @@
+package c_statement;
+
+public class Baseball {
+	public static void main(String[] args){
+		/*
+		 * 135
+		 * 123
+		 * 
+		 * 스트라이크 : 1이라는 숫자와 자리수도같을 때
+		 * 볼 : 3이라는 숫자가 있지만 자리수가 다름
+		 * 아웃 : 아예 없을 경우
+		 * */
+	}
+}

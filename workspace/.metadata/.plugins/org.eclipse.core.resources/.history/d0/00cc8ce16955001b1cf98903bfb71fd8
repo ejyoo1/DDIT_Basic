@@ -1,0 +1,18 @@
+package b_operator;
+
+public class ComparingOperator {
+
+	public static void main(String[] args) {
+		/*
+		 * 비교연산자
+		 * < > <= >= == !=
+		 * 문자열 비교 : equals()
+		 * */
+		
+		int x = 10;
+		int y = 20;
+		boolean b = x < y;
+		System.out.println(b);
+	}
+
+}

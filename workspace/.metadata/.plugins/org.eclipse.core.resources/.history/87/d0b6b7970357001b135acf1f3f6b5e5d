@@ -1,0 +1,138 @@
+package c_statement;
+
+public class RepetitiveStatement {
+	public static void main(String[] args){
+		/*
+		 * 반복문
+		 * - for문
+		 * - while문
+		 * - do-while문
+		 * 
+		 * for문
+		 * -for(초기화; 조건식; 증감식){}
+		 * - 포함하고 있는 문장들을 정해진 횟수만큼 반복하는 문장
+		 * 
+		 * 
+		 * */
+		/*
+		for(int i = 1; i <= 10; i++){
+			//초기화 : 조건식과 증감식에 사용할 변수 초기화
+			//조건식 : 연산결과가 true이면 블럭안의 내용을 수행한다.
+			//증감식 : 변수를 증가/감소시켜 반복문을 제어한다.
+			System.out.println(i + "번째 반복");
+			//초기화한 변수를 블럭 안에서 사용할 수 있다.
+		}
+		//규칙이 있는 문장들을 효율적으로 작성하기 위해 반복문을 사용한다.
+		int sum = 0;
+		
+		sum += 1;
+		sum += 2;
+		sum += 3;
+		sum += 4;
+		sum += 5;
+		sum += 6;
+		sum += 7;
+		sum += 8;
+		sum += 9;
+		sum += 10;
+		System.out.println(sum);
+		
+		sum = 0;
+		for(int i = 1; i <= 10; i++){
+			sum += i;
+		}
+		System.out.println(sum);
+		
+		sum = 0;
+		for(int i = 100; i >= 1; i--){
+			sum += i;
+		}
+		System.out.println(sum);
+		
+		//1부터 100까지 짝수의 합을 출력해주세요.
+		sum = 0;
+		for(int i = 1; i <= 100; i++){
+			if(i % 2 == 0){
+				sum += i;
+			}
+		}
+		System.out.println(sum);
+		
+		//1부터 100까지의 홀수의 합을 출력해주세요.
+		sum = 0;
+		for(int i = 1; i <= 100; i++){
+			if(i % 2 != 0){
+				sum += i;
+			}
+		}
+		System.out.println(sum);
+		
+		//구구단  출력
+		/*
+		 * 2 * 1 = 2
+		 * 2 * 2 = 4
+		 * 2 * 3 = 6
+		 * 2 * 4 = 8
+		 * */
+		
+		for(int i = 1; i <= 9; i++){
+			System.out.println("7 * " + i + " = " + i * 7);
+		}
+		
+		//구구단 전체를 세로로
+		for(int i = 2; i <= 9; i++){
+			for(int j = 1; j <= 9; j++){
+				System.out.println("구구단 : "+i+"*"+j+"="+(i*j));
+			}
+			System.out.println("====");
+		}
+		
+		//구구단 전체를 가로로
+		for(int i = 1; i <= 9; i++){
+			for(int j = 2; j <= 9; j++){
+				System.out.print("구구단 : "+j+"*"+i+"="+(i*j) + "\t");
+			}
+			System.out.println("");
+		}
+		
+		//별찍기 5개 5줄
+		for(int i = 1; i <= 5; i++){
+			for(int j = 1; j <= 5; j++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		//별찍기 1씩 증가되는 별
+		for(int i = 1; i <=5; i++){
+			for(int j = 1; j <= i; j++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		//별찍기 1씩 감소되는 별
+		for(int i = 5; i >= 1; i--){
+			for(int j = 1; j <= i ; j++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		*/
+		//공백 포함별찍기
+		//별찍기 1씩 증가되는 별
+				/*for(int i = 1; i <=5; i++){
+					for(int j = 1; j <= i; j++){
+						for(int k = 4; k<=1 ; k--){
+							System.out.print(" ");
+						}
+						System.out.print("*");
+					}
+					System.out.println();
+				}*/
+				
+				for(int k = 4; k <= 1; k--){
+					System.out.println(" ");
+				}
+	}
+}
