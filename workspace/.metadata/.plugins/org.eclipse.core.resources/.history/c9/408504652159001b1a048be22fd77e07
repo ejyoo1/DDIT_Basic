@@ -1,0 +1,24 @@
+package ch7;
+
+
+public class ImportTest {
+	public static void main(String[] args){
+		
+	}
+}
+
+class Product{
+	
+}
+
+class Tv extends Product{
+	
+}
+
+class Computer extends Product{
+	
+}
+
+class Buyer{
+	
+}

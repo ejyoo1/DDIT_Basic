@@ -1,0 +1,19 @@
+package ch7;
+
+
+public class ImportTest {
+	public static void main(String[] args){
+		FireEngine fe = new FireEngine();
+		
+		if(fe instanceof FireEngine){
+			System.out.println("This isa FireEngine instance.");
+		}
+		
+		if(fe instanceof Car){
+			System.out.println("This is a Carinstance.");
+		}
+	}
+}
+
+class Car{}
+class FireEngine extends Car{}

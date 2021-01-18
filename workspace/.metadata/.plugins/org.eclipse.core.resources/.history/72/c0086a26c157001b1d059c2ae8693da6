@@ -1,0 +1,17 @@
+package ch7;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class ImportTest {
+	public static void main(String[] args){
+		Date today = new Date();
+		
+		SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/DD");
+		SimpleDateFormat time1 = new SimpleDateFormat("hh:mm:ss a");
+		
+		System.out.println("오늘 날짜는 :" + date.format(today));
+		System.out.println("현재 시간은 " + time1.format(today));
+		System.out.println("현재 시간은 " + time2.format(today));
+	}
+}

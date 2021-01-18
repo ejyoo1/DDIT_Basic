@@ -1,0 +1,18 @@
+package ch7;
+
+
+public class ImportTest {
+	public static void main(String[] args){
+		
+	}
+}
+
+class Product{
+	int price;
+	int bonusPoint;
+	
+	Product(int price){
+		int price = price;
+		int bonusPoint = (int)(price);
+	}
+}
