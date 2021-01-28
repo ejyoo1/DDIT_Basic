@@ -1,6 +1,0 @@
-package dynamic_beat_1;
-
-public class DynamicBeat extends JFrame {
-// 클래스 이름은 항상 대문자로
-//JFrame : 자바에서 GUI 기반의 프로그램을 만들기위해서 기본적으로  JFrame(이미 존재하는 라이브러리)이라는것을 상속 받아야함.
-}

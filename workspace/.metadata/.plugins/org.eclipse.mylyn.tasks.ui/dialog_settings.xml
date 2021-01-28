@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="TaskSelectionDialogSection">
-		<item value="true" key="ShowStatusLine"/>
-		<item value="true" key="IsUsingWindowWorkingSet"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
-		<item value="Aggregate for window 1586744248979" key="WorkingSetName"/>
-		<item value="false" key="OpenInBrowser"/>
-		<item value="true" key="ShowCompletedTasks"/>
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;"/>
+		<item key="IsUsingWindowWorkingSet" value="true"/>
+		<item key="WorkingSetName" value="Aggregate for window 1611573940858"/>
+		<item key="OpenInBrowser" value="false"/>
+		<item key="ShowCompletedTasks" value="true"/>
 		<section name="DialogBoundsSettings">
-			<item value="600" key="DIALOG_WIDTH"/>
-			<item value="195" key="DIALOG_Y_ORIGIN"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="668" key="DIALOG_X_ORIGIN"/>
-			<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_Y_ORIGIN" value="195"/>
+			<item key="DIALOG_X_ORIGIN" value="668"/>
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 		</section>
 	</section>
 </section>
