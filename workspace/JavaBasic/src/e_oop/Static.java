@@ -1,5 +1,7 @@
 package e_oop;
 
+import e_oop.ScanUtil;
+
 public class Static {
 	/*
 	 * - static을 붙이면 프로그램 실행 시 메모리에 올라간다.

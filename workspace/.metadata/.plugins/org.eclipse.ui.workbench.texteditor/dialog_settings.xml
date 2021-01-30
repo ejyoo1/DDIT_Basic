@@ -13,8 +13,9 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="Connect"/>
+		<item key="selection" value="userHint"/>
 		<list key="findhistory">
+			<item value="userHint"/>
 			<item value="connect"/>
 			<item value="Student"/>
 			<item value="score"/>

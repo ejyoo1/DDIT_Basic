@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Iterator"/>
-    <fullyQualifiedTypeName name="com.sun.jndi.url.iiopname.iiopnameURLContextFactory"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="i_collection.ArrayList"/>
-    <fullyQualifiedTypeName name="i_collection.ArrayListMethod"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
@@ -50,7 +45,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="e_oop.score.Student"/>
     <fullyQualifiedTypeName name="e_oop.score.ClassMaker"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequestWrapper"/>
     <fullyQualifiedTypeName name="com.w.RequestWrapper"/>
@@ -59,5 +53,11 @@
     <fullyQualifiedTypeName name="e_oop.score2.Student"/>
     <fullyQualifiedTypeName name="Radio"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="f_game.MyGame"/>
+    <fullyQualifiedTypeName name="e_oop.ScanUtil"/>
+    <fullyQualifiedTypeName name="sub.DyingMessage"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>
