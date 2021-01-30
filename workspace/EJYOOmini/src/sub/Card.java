@@ -1,5 +1,7 @@
 package sub;
 
+import java.util.Arrays;
+
 public class Card {
 	static String[] round_answer = {"복서", "협박", "화분"};
 	int USER_VIEW_CARD 	= 9;
@@ -28,5 +30,32 @@ public class Card {
 			System.out.print ("  " + tool[i]);
 		}
 		System.out.println ();
+	}
+	
+	boolean cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
+		System.out.println ("cardDel호출");
+		System.out.println (Arrays.toString (userAnswerCriminal));
+		System.out.println (Arrays.toString (userAnswerMotivation));
+		System.out.println (Arrays.toString (userAnswerTool));
+		boolean flag = false;
+		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {
+			if(userAnswerCriminal[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
+				flag = true;
+				break;
+			}
+		}
+		for(int i = 0 ; i < userAnswerMotivation.length ; i++ ) {
+			if(userAnswerMotivation[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
+				flag = true;
+				break;
+			}
+		}
+		for(int i = 0 ; i < userAnswerTool.length ; i++ ) {
+			if(userAnswerTool[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
+				flag = true;
+				break;
+			}
+		}
+		return flag;
 	}
 }

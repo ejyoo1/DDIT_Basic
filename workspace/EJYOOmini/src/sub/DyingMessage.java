@@ -25,29 +25,37 @@ public class DyingMessage {
 		
 		
 		int count = 0;
-		Scanner sc = new Scanner(System.in);
-		User dm = new User();
+		
 		while(true) {
+			DyingMessage dm = new DyingMessage();
 			count++;
 			System.out.println ();
 			System.out.println (count+"번째 판입니다.");
-			System.out.println (dm.userMenu (hintcount));
-			
-			String userInput1 = sc.nextLine ();
-			switch(userInput1) {
-				case "힌트얻기" :
-					hintcount = dm.userHint(hintcount);
-					break;
-				case "정답맞추기" :
-					dm.userSuccess ();
-					break;
-				case "게임종료" : 
-					dm.userDistory ();
-					break;
-				case "정답보기" :
-					dm.userAnswer ();
-					break;
-			}
+			dm.userMenuSettings();
+		}
+	}
+	void userMenuSettings() {
+		Scanner sc = new Scanner(System.in);
+		User dm = new User();
+		System.out.println (dm.userMenu (hintcount));
+		String userInput1 = sc.nextLine ();
+		switch(userInput1) {
+			case "힌트얻기" :
+				hintcount = dm.userHint(hintcount);
+				break;
+			case "정답맞추기" :
+				dm.userSuccess ();
+				break;
+			case "게임종료" : 
+				dm.userDistory ();
+				break;
+			case "정답보기" :
+				dm.userAnswer ();
+				break;
+			default : 
+				System.out.println ("없는메뉴입니다. 다시 입력해주세요.");
+				userMenuSettings();
+				break;
 		}
 	}
 }

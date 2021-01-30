@@ -34,12 +34,14 @@ public class User {
 		return hintcount;
 	}
 	
-	void reasoningProcess(){//추리 시 try 관련 질문
+	void reasoningProcess(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool){//추리 시 try 관련 질문
 		System.out.println ("선택한 6장의 카드를 제거하겠습니까? (YES/NO)");
 		Scanner sc = new Scanner(System.in);
 		String userInput = sc.nextLine ();
 		if(userInput.equals ("YES")) {
-			//검사
+			Card cd = new Card();
+			boolean userCardDelResult = cd.cardDel (userAnswerCriminal, userAnswerMotivation, userAnswerTool);
+			System.out.println (userCardDelResult);
 		}else if(userInput.equals ("NO")) {
 			System.out.println ("제거할 6장의 카드를 다시 입력해주세요.");
 			reasoningInput();
@@ -67,7 +69,7 @@ public class User {
 				System.out.println ("제거할 카드를 많이 입력하였습니다. 이번 사건과 관련 없는 카드를 6개 입력해야 합니다.");
 				userAnswerCount = 0;
 			}else {//선택한 카드가 6장인 경우 
-				reasoningProcess();
+				reasoningProcess(userAnswerCriminal, userAnswerMotivation, userAnswerTool);
 				break;
 			}
 		}
