@@ -32,30 +32,87 @@ public class Card {
 		System.out.println ();
 	}
 	
-	boolean cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
-		System.out.println ("cardDel호출");
-		System.out.println (Arrays.toString (userAnswerCriminal));
-		System.out.println (Arrays.toString (userAnswerMotivation));
-		System.out.println (Arrays.toString (userAnswerTool));
-		boolean flag = false;
+	//범인이 아닌 카드 체크 : 사용자 입력 중 범인인 사람이 잇으면 false(추리실패)/ 범인이 없으면 true(추리성공)
+	boolean cardCheckerCriminal(String[] userAnswerCriminal){//사용자 입력값이 범인이 아닌 사람이 존재하는지 확인하기위한 메서드
+		boolean flag = true;
 		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {
-			if(userAnswerCriminal[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
-				flag = true;
-				break;
+			if(userAnswerCriminal[i].equals (round_answer[0])) {//정답과 같은것이 하나라도 있으면
+				flag = false;//같음. 추리실패
+				break;//반복문을 빠져나감.
 			}
 		}
+		return flag;//if문 조건이 true이면 실패 false면 추리 성공
+	}
+	
+	//살해동기가 아닌 카드 체크 : 사용자 입력 중 정답인 살해동기가 있으면 false(추리실패)/ 정답인 살해동기가 없으면 true(추리성공)
+	boolean cardCheckerMotivation(String[] userAnswerMotivation){
+		System.out.println (Arrays.toString (userAnswerMotivation));
+		boolean flag = true;
 		for(int i = 0 ; i < userAnswerMotivation.length ; i++ ) {
-			if(userAnswerMotivation[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
-				flag = true;
-				break;
+			if(userAnswerMotivation[i].equals (round_answer[1])) {//정답과 같은것이 잇다면
+				flag = false;//같음. 추리실패
+				break;//반복문을 빠져나감.
 			}
 		}
+		return flag;//if문 조건이 true이면 실패 false면 추리 성공
+	}
+		
+	//살해도구가 아닌 카드 체크 : 사용자 입력 중 정답인 살해도구가 있으면 false(추리실패)/ 정답인 살해도구가 없으면 true(추리성공)	
+	boolean cardCheckTool (String[] userAnswerTool) {
+		System.out.println ("사용자가 입력한 살해도구 " + Arrays.toString (userAnswerTool));
+		boolean flag = true;
 		for(int i = 0 ; i < userAnswerTool.length ; i++ ) {
-			if(userAnswerTool[i].equals (round_answer)) {//만약에 정답과 같은것이 있으면 추리 실패
-				flag = true;
+			if(userAnswerTool[i].equals (round_answer[2])) {//만약에 정답과 같은것이 있으면 추리 실패
+				flag = false;
 				break;
 			}
 		}
 		return flag;
 	}
+		
+	void cardDelChecker() {
+		
+	}
+	
+	
+	void cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
+		System.out.println ("cardDel호출");
+		System.out.println (Arrays.toString (userAnswerCriminal));
+		System.out.println (Arrays.toString (userAnswerMotivation));
+		System.out.println (Arrays.toString (userAnswerTool));
+		boolean flag = false;
+		
+		//기본 목록에 같은 범인이 있는경우 " "로 변경
+		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {//사용자 정답 비교
+			for(int j = 0 ; j < criminal.length ; j++ ) {
+				if(userAnswerCriminal[i].equals (criminal[j])) {//정답과 같은것이 하나라도 있으면
+					criminal[j] = "■■■";
+					break;
+				}
+			}			
+		}
+		
+		//기본 목록에 같은 살해 동기가 있는경우 " "로 변경
+		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {//사용자 정답 비교
+			for(int j = 0 ; j < criminal.length ; j++ ) {
+				if(userAnswerCriminal[i].equals (criminal[j])) {//정답과 같은것이 하나라도 있으면
+					criminal[j] = "■■■";
+					break;
+				}
+			}			
+		}
+		
+		//기본 목록에 같은 살해 도구가 있는경우 " "로 변경
+		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {//사용자 정답 비교
+			for(int j = 0 ; j < criminal.length ; j++ ) {
+				if(userAnswerCriminal[i].equals (criminal[j])) {//정답과 같은것이 하나라도 있으면
+					criminal[j] = "■■■";
+					break;
+				}
+			}			
+		}
+		
+	}
+
+	
 }
