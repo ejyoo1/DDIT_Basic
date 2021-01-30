@@ -3880,3 +3880,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.oracle:oj
 2021-01-28 20:50:12,065 [Worker-74: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\DBTest2\src\test\resources
 2021-01-29 08:51:10,786 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2021-01-29 17:46:29,602 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-01-30 09:40:14,695 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
