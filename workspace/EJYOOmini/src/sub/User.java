@@ -22,14 +22,18 @@ public class User {
 		if(hintcount==1) {
 			ht = new Hint("범인힌트1-1","범인힌트1-2","살해동기1-1","살해동기1-2","도구1-1","도구1-2");
 			ht.hintPrintln (hintcount);
-			System.out.println ("첫번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
+			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			reasoningInput();
 		}else if(hintcount==2) {
 			ht = new Hint("범인힌트2-1","범인힌트2-2","살해동기2-1","살해동기2-2","도구2-1","도구2-2");
 			ht.hintPrintln (hintcount);
+			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
+			reasoningInput();
 		}else if(hintcount==3) {
 			ht = new Hint("범인힌트3-1","범인힌트3-2","살해동기3-1","살해동기3-2","도구3-1","도구3-2");
 			ht.hintPrintln (hintcount);
+			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
+			reasoningInput();
 		}
 		return hintcount;
 	}
@@ -120,11 +124,21 @@ public class User {
 	void userSuccess() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println ("정답을 입력하세요. [정답입력형식] : '범인,범행동기,범행도구'");
+		System.out.print ("정답을 입력하세요 >> ");
 		String[] userInputAnswer = sc.nextLine ().split (",");
-		if(userInputAnswer[0].equals ("복서")) {
-			System.out.println ("범인같음");
+		if(userInputAnswer[0].equals (Card.round_answer[0]) && userInputAnswer[1].equals (Card.round_answer[1]) && userInputAnswer[2].equals (Card.round_answer[2]) ) {
+			System.out.println ("userInputAnswer[0].equals (Card.round_answer[0]) 결과 : " + userInputAnswer[0].equals (Card.round_answer[0]));
+			System.out.println ("userInputAnswer[1].equals (Card.round_answer[1]) 결과 : " + userInputAnswer[1].equals (Card.round_answer[1]));
+			System.out.println ("userInputAnswer[2].equals (Card.round_answer[2]) 결과 : " + userInputAnswer[2].equals (Card.round_answer[2]));
+			
+			System.out.println ("추리에 성공하였습니다.");
+			System.out.println ("게임을 종료합니다.");
+			System.exit (0);
 		}else {
-			System.out.println ("범인다름");
+			System.out.println ("userInputAnswer[0].equals (Card.round_answer[0]) 결과 : " + userInputAnswer[0].equals (Card.round_answer[0]));
+			System.out.println ("userInputAnswer[1].equals (Card.round_answer[1]) 결과 : " + userInputAnswer[1].equals (Card.round_answer[1]));
+			System.out.println ("userInputAnswer[2].equals (Card.round_answer[2]) 결과 : " + userInputAnswer[2].equals (Card.round_answer[2]));
+			System.out.println ("추리에 실패하였습니다.");
 		}
 	}
 	
