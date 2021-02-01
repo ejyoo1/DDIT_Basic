@@ -6,8 +6,7 @@ public class DyingMessage {
 	static int hintcount = 0;
 	public static void main (String[] args) {
 		System.out.println("다잉메세지. 소설가가 남긴 마지막 메세지");
-		
-		
+
 		int count = 0;
 		
 		while(true) {

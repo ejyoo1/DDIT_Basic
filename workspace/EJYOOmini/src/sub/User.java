@@ -140,13 +140,18 @@ public class User {
 			
 			boolean criminalflag = card.cardCheckerCriminal(userAnswerCriminal);
 			userAnswerCount += userAnswerCriminal.length;
-			System.out.println (userAnswerCount);
+			System.out.println ("총 사용자 입력값 : " + userAnswerCount);
 			System.out.println ("criminalflag 추리 결과 : " + criminalflag);//true : 추리성공, false : 추리실패 
 			if(criminalflag) {
 				System.out.println ("추리성공");
 			}else {
 				System.out.println ("추리실패");
 			}
+			
+			/*if(userAnswerCount==6) {
+				reasoningProcess(userAnswerCriminal, userAnswerMotivation, userAnswerTool, totalflag);
+				break;
+			}*/
 			
 			String[] userAnswerMotivation = inputMotivation();
 			//유효성 검사 추가
@@ -162,7 +167,7 @@ public class User {
 						
 			boolean motivationflag = card.cardCheckerMotivation(userAnswerMotivation);
 			userAnswerCount += userAnswerMotivation.length;
-			System.out.println (userAnswerCount);
+			System.out.println ("총 사용자 입력값 : " + userAnswerCount);
 			System.out.println ("motivationflag 추리 결과 : " + motivationflag);
 			if(motivationflag) {
 				System.out.println ("추리성공");
@@ -185,7 +190,7 @@ public class User {
 			
 			boolean toolflag = card.cardCheckTool(userAnswerTool);
 			userAnswerCount += userAnswerTool.length;
-			System.out.println (userAnswerCount);
+			System.out.println ("총 사용자 입력값 : " + userAnswerCount);
 			System.out.println ("toolflag 추리 결과 : " + toolflag);
 			if(toolflag) {
 				System.out.println ("추리성공");
