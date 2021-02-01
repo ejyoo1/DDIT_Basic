@@ -11,7 +11,6 @@ public class Card {
 	static String[] tool		= { "화분", "가방", "휴지통", "곰인형", "세탁기", "냉장고", "변기", "코트", "쇼핑백" };
 	
 	void cardPrintln(String cardType) {//카드 출력을 위한 메서드
-		System.out.print ("■"+cardType+"■");
 		for(int i = 0 ; i < USER_VIEW_CARD ; i++) {
 			if(cardType.equals ("criminal")) {//범인을 출력하고자 하는 경우
 				System.out.print ("  " + criminal[i]);
@@ -38,7 +37,7 @@ public class Card {
 	
 	//살해동기가 아닌 카드 체크 : 사용자 입력 중 정답인 살해동기가 있으면 false(추리실패)/ 정답인 살해동기가 없으면 true(추리성공)
 	boolean cardCheckerMotivation(String[] userAnswerMotivation){
-		System.out.println (Arrays.toString (userAnswerMotivation));
+		//System.out.println (Arrays.toString (userAnswerMotivation));
 		boolean flag = true;
 		for(int i = 0 ; i < userAnswerMotivation.length ; i++ ) {
 			if(userAnswerMotivation[i].equals (round_answer[1])) {//정답과 같은것이 잇다면
@@ -51,7 +50,7 @@ public class Card {
 		
 	//살해도구가 아닌 카드 체크 : 사용자 입력 중 정답인 살해도구가 있으면 false(추리실패)/ 정답인 살해도구가 없으면 true(추리성공)	
 	boolean cardCheckTool (String[] userAnswerTool) {
-		System.out.println ("사용자가 입력한 살해도구 " + Arrays.toString (userAnswerTool));
+		//System.out.println ("사용자가 입력한 살해도구 " + Arrays.toString (userAnswerTool));
 		boolean flag = true;
 		for(int i = 0 ; i < userAnswerTool.length ; i++ ) {
 			if(userAnswerTool[i].equals (round_answer[2])) {//만약에 정답과 같은것이 있으면 추리 실패
@@ -64,10 +63,10 @@ public class Card {
 	
 	
 	void cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
-		System.out.println ("cardDel호출");
-		System.out.println (Arrays.toString (userAnswerCriminal));
-		System.out.println (Arrays.toString (userAnswerMotivation));
-		System.out.println (Arrays.toString (userAnswerTool));
+		//System.out.println ("cardDel호출");
+		//System.out.println (Arrays.toString (userAnswerCriminal));
+		//System.out.println (Arrays.toString (userAnswerMotivation));
+		//System.out.println (Arrays.toString (userAnswerTool));
 		boolean flag = false;
 		
 		if(userAnswerCriminal!=null) {
