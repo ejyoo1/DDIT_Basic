@@ -10,24 +10,15 @@ public class Card {
 	static String[] motivation	= { "협박", "재미", "빚", "불륜", "시기", "유산", "배신", "스토킹", "강도" };
 	static String[] tool		= { "화분", "가방", "휴지통", "곰인형", "세탁기", "냉장고", "변기", "코트", "쇼핑백" };
 	
-	
-	void cardCriminalPrintin() {
+	void cardPrintln(String cardType) {//카드 출력을 위한 메서드
 		for(int i = 0 ; i < USER_VIEW_CARD ; i++) {
-			System.out.print ("  " + criminal[i]);
-		}
-		System.out.println ();
-	}
-	
-	void cardMotivationPrintin() {
-		for(int i = 0 ; i < USER_VIEW_CARD ; i++) {
-			System.out.print ("  " + motivation[i]);
-		}
-		System.out.println ();
-	}
-	
-	void cardToolPrintin() {
-		for(int i = 0 ; i < USER_VIEW_CARD ; i++) {
-			System.out.print ("  " + tool[i]);
+			if(cardType.equals ("criminal")) {//범인을 출력하고자 하는 경우
+				System.out.print ("  " + criminal[i]);
+			}else if(cardType.equals ("motivation")) {//살해동기를 출력하고자 하는 경우 
+				System.out.print ("  " + motivation[i]);
+			}else if(cardType.equals ("tool")) {//살해 도구를 출력하고자 하는 경우
+				System.out.print ("  " + tool[i]);
+			}
 		}
 		System.out.println ();
 	}

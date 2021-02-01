@@ -20,20 +20,20 @@ public class Hint {
 	void hintPrintln(int count) {
 		Card cd = new Card();
 		System.out.print ("**[[범인 힌트" + (count) +  " : " + criminalHint1 + ", " + criminalHint2 + "]] ");
-		cd.cardCriminalPrintin();
+		cd.cardPrintln("criminal");//범인 목록을 보기위한 메서드
 		System.out.println ("---------------------------------------------------------------------------------------------");
 		System.out.println ();
 		
 		
 		System.out.print ("**[[살해동기 힌트" + (count) +  " : " + motivationHint1 + ", " + motivationHint1 + "]] ");
-		cd.cardMotivationPrintin ();
+		cd.cardPrintln("motivation");//살해동기 목록을 보기위한 메서드
 		System.out.println ("---------------------------------------------------------------------------------------------");
 		System.out.println ();
 		
 		
 		
 		System.out.print ("**[[살해도구 힌트" + (count) +  " : " + toolHint1 + ", " + toolHint2 + "]] ");
-		cd.cardToolPrintin ();
+		cd.cardPrintln("tool");//살해도구 목록을 보기위한 메서드
 		System.out.println ("---------------------------------------------------------------------------------------------");
 		System.out.println ();
 	}

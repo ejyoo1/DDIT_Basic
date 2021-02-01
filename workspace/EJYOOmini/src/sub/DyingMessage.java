@@ -5,36 +5,45 @@ import java.util.Scanner;
 public class DyingMessage {
 	static int hintcount = 0;
 	public static void main (String[] args) {
+		
 		System.out.println("다잉메세지. 소설가가 남긴 마지막 메세지");
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 
-		int count = 0;
+		int count = 0;//게임 라운드를 출력하기 위한 카운트
 		
 		while(true) {
 			DyingMessage dm = new DyingMessage();
+			
 			count++;
-			System.out.println ();
+			System.out.println ("범인을 찾아주세요!");
+			dm.showCardList();//카드 목록을 출력하는 메서드
+			dm.userMenuSettings();//메뉴 목록을 출력하는 메서드
+			System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■"+count+"번째 판입니다.■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 			
-			Card cd = new Card();
-			System.out.println("소설가의 마지막 문장을 보고 '범인', '살해동기', '살해도구'를 맞춰주세요");
-			System.out.println ("*****************************************************************");
-			
-			System.out.print ("*[[범인목록]] ");
-			cd.cardCriminalPrintin ();
-			System.out.println ();
-			
-			System.out.print ("*[[살해동기]] ");
-			cd.cardMotivationPrintin ();
-			System.out.println ();
-			
-			System.out.print ("*[[살해도구]] ");
-			cd.cardToolPrintin ();
-			System.out.println ();
-			System.out.println ("*****************************************************************");
-			
-			System.out.println ();
-			System.out.println (count+"번째 판입니다.");
-			dm.userMenuSettings();
 		}
+	}
+	
+	void showCardList() {
+		Card cd = new Card();
+		
+		System.out.println("소설가의 마지막 문장을 보고 '범인', '살해동기', '살해도구'를 맞춰주세요");
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		
+		System.out.print ("■범인목록■");
+		cd.cardPrintln("criminal");
+		System.out.println ();
+		
+		System.out.print ("■살해동기■ ");
+		cd.cardPrintln("motivation");
+		System.out.println ();
+		
+		System.out.print ("■살해도구■ ");
+		cd.cardPrintln("tool");
+		System.out.println ();
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		
+		System.out.println ();
+		
 	}
 	void userMenuSettings() {
 		Scanner sc = new Scanner(System.in);
