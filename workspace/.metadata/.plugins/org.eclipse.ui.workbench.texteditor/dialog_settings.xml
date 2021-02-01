@@ -13,8 +13,13 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="Del"/>
+		<item key="selection" value="3"/>
 		<list key="findhistory">
+			<item value="3"/>
+			<item value="reasoningInput"/>
+			<item value="reason"/>
+			<item value="resoning"/>
+			<item value="resibubg"/>
 			<item value="del"/>
 			<item value="userHint"/>
 			<item value="connect"/>
@@ -25,8 +30,6 @@
 			<item value="주문관리"/>
 			<item value="관리자 홈"/>
 			<item value="관리자"/>
-			<item value="환불내역"/>
-			<item value="ochoOrd_id("/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student2"/>

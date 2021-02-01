@@ -55,24 +55,36 @@ public class User {
 		}else if(userInput.equals ("NO")) {
 			System.out.println ("제거할 6장의 카드를 다시 입력해주세요.");
 			reasoningInput();
+		}else {
+			System.out.println ("잘못입력하였습니다. 대소문자 구별하며 공백없이 입력해주세요.");
+			reasoningProcess(userAnswerCriminal,userAnswerMotivation,userAnswerTool,totalflag);
 		}
 	}
 	
-	String[] inputCriminal() {
+	String[] inputCriminal() {//범인을 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		System.out.println ("[제거] 범인이 아닐 것 같은 직업이 있습니까? 있다면 입력하세요.");
 		String[] userAnswerCriminal = sc.nextLine ().split (",");
+		System.out.println (userAnswerCriminal.length);
+		//공백 검사
+		for(int i = 0 ; i < userAnswerCriminal.length ; i++) {
+			if(userAnswerCriminal[i].equals ("")) {
+				System.out.println ("다시 입력하세요.");
+				userAnswerCriminal = null;
+				userAnswerCriminal = sc.nextLine ().split (",");
+			}
+		}
 		return userAnswerCriminal;
 	}
 	
-	String[] inputMotivation() {
+	String[] inputMotivation() {//살해동기를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		System.out.println ("[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요.");
 		String[] userAnswerMotivation = sc.nextLine ().split (",");
 		return userAnswerMotivation;
 	}
 	
-	String[] inputTool() {
+	String[] inputTool() {//살해도구를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		System.out.println ("[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요.");
 		String[] userAnswerTool = sc.nextLine ().split (",");
@@ -93,6 +105,7 @@ public class User {
 			//유효성 검사 추가
 			while(true) {
 				boolean result = reasoningInputChecker(userAnswerCriminal,"Criminal");//true : 유효성검사 성공, false : 유효성 검사 실패
+				System.out.println ("result : " + result);
 				if(result) {
 					break;
 				}else {
@@ -178,6 +191,7 @@ public class User {
 	
 	//사용자가 입력한 값이 제시된 카드 목록에 유효한지 검사하는 메서드
 	boolean reasoningInputChecker(String[] userInput,String type){
+		System.out.println (Arrays.toString (userInput));
 		boolean[] flag = new boolean[userInput.length];
 		if(type.equals ("Criminal")) {
 			for(int i = 0 ; i < userInput.length ; i++) {
@@ -219,14 +233,18 @@ public class User {
 		//최종 결과 확인
 		System.out.println (Arrays.toString (flag));
 		boolean result = false;
-		for(int i = 0 ; i < userInput.length-1 ; i++) {
-			for(int j = i ; j < userInput.length ; j++) {
-				if(flag[i]&&flag[j]) {
-					result = true;
-				}else {
-					result = false;
+		if(flag.length>1) {
+			for(int i = 0 ; i < userInput.length-1 ; i++) {
+				for(int j = i ; j < userInput.length ; j++) {
+					if(flag[i]&&flag[j]) {
+						result = true;
+					}else {
+						result = false;
+					}
 				}
 			}
+		}else if(flag.length==1) {
+			result = flag[0];
 		}
 		return result;
 	}
