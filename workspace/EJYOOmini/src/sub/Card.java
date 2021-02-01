@@ -11,6 +11,7 @@ public class Card {
 	static String[] tool		= { "화분", "가방", "휴지통", "곰인형", "세탁기", "냉장고", "변기", "코트", "쇼핑백" };
 	
 	void cardPrintln(String cardType) {//카드 출력을 위한 메서드
+		System.out.print ("■"+cardType+"■");
 		for(int i = 0 ; i < USER_VIEW_CARD ; i++) {
 			if(cardType.equals ("criminal")) {//범인을 출력하고자 하는 경우
 				System.out.print ("  " + criminal[i]);
@@ -69,34 +70,40 @@ public class Card {
 		System.out.println (Arrays.toString (userAnswerTool));
 		boolean flag = false;
 		
+		if(userAnswerCriminal!=null) {
 		//기본 목록에 같은 범인이 있는경우 " "로 변경
-		for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {//사용자 정답 비교
-			for(int j = 0 ; j < criminal.length ; j++ ) {
-				if(userAnswerCriminal[i].equals (criminal[j])) {//정답과 같은것이 하나라도 있으면
-					criminal[j] = "■■■";
-					break;
-				}
-			}			
+			for(int i = 0 ; i < userAnswerCriminal.length ; i++ ) {//사용자 정답 비교
+				for(int j = 0 ; j < criminal.length ; j++ ) {
+					if(userAnswerCriminal[i].equals (criminal[j])) {//정답과 같은것이 하나라도 있으면
+						criminal[j] = "■■■";
+						break;
+					}
+				}			
+			}
 		}
 		
-		//기본 목록에 같은 살해 동기가 있는경우 " "로 변경
-		for(int i = 0 ; i < userAnswerMotivation.length ; i++ ) {//사용자 정답 비교
-			for(int j = 0 ; j < motivation.length ; j++ ) {
-				if(userAnswerMotivation[i].equals (motivation[j])) {//정답과 같은것이 하나라도 있으면
-					motivation[j] = "■■■";
-					break;
-				}
-			}			
+		if(userAnswerMotivation!=null) {
+			//기본 목록에 같은 살해 동기가 있는경우 " "로 변경
+			for(int i = 0 ; i < userAnswerMotivation.length ; i++ ) {//사용자 정답 비교
+				for(int j = 0 ; j < motivation.length ; j++ ) {
+					if(userAnswerMotivation[i].equals (motivation[j])) {//정답과 같은것이 하나라도 있으면
+						motivation[j] = "■■■";
+						break;
+					}
+				}			
+			}
 		}
 		
-		//기본 목록에 같은 살해 도구가 있는경우 " "로 변경
-		for(int i = 0 ; i < userAnswerTool.length ; i++ ) {//사용자 정답 비교
-			for(int j = 0 ; j < tool.length ; j++ ) {
-				if(userAnswerTool[i].equals (tool[j])) {//정답과 같은것이 하나라도 있으면
-					tool[j] = "■■■";
-					break;
-				}
-			}			
+		if(userAnswerTool!=null) {
+			//기본 목록에 같은 살해 도구가 있는경우 " "로 변경
+			for(int i = 0 ; i < userAnswerTool.length ; i++ ) {//사용자 정답 비교
+				for(int j = 0 ; j < tool.length ; j++ ) {
+					if(userAnswerTool[i].equals (tool[j])) {//정답과 같은것이 하나라도 있으면
+						tool[j] = "■■■";
+						break;
+					}
+				}			
+			}
 		}
 		
 	}

@@ -13,12 +13,14 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="다시"/>
+		<item key="selection" value="reasoningProcess"/>
 		<list key="findhistory">
+			<item value="reasoningProcess"/>
+			<item value="reasoningInput"/>
+			<item value="totalflag"/>
 			<item value="다시"/>
 			<item value="Process"/>
 			<item value="3"/>
-			<item value="reasoningInput"/>
 			<item value="reason"/>
 			<item value="resoning"/>
 			<item value="resibubg"/>
@@ -28,8 +30,6 @@
 			<item value="Student"/>
 			<item value="score"/>
 			<item value="showmanman"/>
-			<item value="putmancart"/>
-			<item value="주문관리"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student2"/>
