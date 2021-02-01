@@ -7,7 +7,7 @@ public class Card {
 	int USER_VIEW_CARD 	= 9;
 	
 	static String[] criminal 	= { "복서", "시인", "건축가", "미용사", "의사", "아이돌", "사기꾼", "가수", "군인" };
-	static String[] motivation	= { "협박", "재미", "빛", "불륜", "시기", "유산", "배신", "스토킹", "강도" };
+	static String[] motivation	= { "협박", "재미", "빚", "불륜", "시기", "유산", "배신", "스토킹", "강도" };
 	static String[] tool		= { "화분", "가방", "휴지통", "곰인형", "세탁기", "냉장고", "변기", "코트", "쇼핑백" };
 	
 	

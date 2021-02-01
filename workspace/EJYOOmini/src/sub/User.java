@@ -96,6 +96,7 @@ public class User {
 				if(result) {
 					break;
 				}else {
+					System.out.println ("올바른 '범인' 카드를 입력해주세요.");
 					userAnswerCriminal = inputCriminal();
 				}
 			}
@@ -117,6 +118,7 @@ public class User {
 				if(result) {
 					break;
 				}else {
+					System.out.println ("올바른 '살해동기' 카드를 입력해주세요.");
 					userAnswerMotivation = inputMotivation();
 				}
 			}
@@ -138,6 +140,7 @@ public class User {
 				if(result) {
 					break;
 				}else {
+					System.out.println ("올바른 '살해도구' 카드를 입력해주세요.");
 					userAnswerTool = inputTool();
 				}
 			}
@@ -175,7 +178,7 @@ public class User {
 	
 	//사용자가 입력한 값이 제시된 카드 목록에 유효한지 검사하는 메서드
 	boolean reasoningInputChecker(String[] userInput,String type){
-		boolean[] flag = new boolean[3];
+		boolean[] flag = new boolean[userInput.length];
 		if(type.equals ("Criminal")) {
 			for(int i = 0 ; i < userInput.length ; i++) {
 				for(int j = 0 ; j < Card.criminal.length ; j++) {
@@ -189,14 +192,43 @@ public class User {
 			}
 		}else if(type.equals ("Motivation")) {
 			//Card.motivation
+			for(int i = 0 ; i < userInput.length ; i++) {
+				for(int j = 0 ; j < Card.motivation.length ; j++) {
+					if(userInput[i].equals (Card.motivation[j])) {
+						flag[i] = true;
+						break;
+					}else {
+						flag[i] = false;
+					}
+				}
+			}
 		}else if(type.equals ("Tool")) {
 			//Card.tool
+			for(int i = 0 ; i < userInput.length ; i++) {
+				for(int j = 0 ; j < Card.tool.length ; j++) {
+					if(userInput[i].equals (Card.tool[j])) {
+						flag[i] = true;
+						break;
+					}else {
+						flag[i] = false;
+					}
+				}
+			}
 		}
 		
 		//최종 결과 확인
 		System.out.println (Arrays.toString (flag));
-		
-		return flag[0]&&flag[1]&&flag[2];
+		boolean result = false;
+		for(int i = 0 ; i < userInput.length-1 ; i++) {
+			for(int j = i ; j < userInput.length ; j++) {
+				if(flag[i]&&flag[j]) {
+					result = true;
+				}else {
+					result = false;
+				}
+			}
+		}
+		return result;
 	}
 	
 	
