@@ -20,17 +20,17 @@ public class User {
 		System.out.println ((hintcount)+"번째 힌트입니다.");
 		Hint ht;
 		if(hintcount==1) {
-			ht = new Hint("범인힌트1-1","범인힌트1-2","살해동기1-1","살해동기1-2","도구1-1","도구1-2");
+			ht = new Hint("외로운","사각형","치사한","머리","딱딱한","원");
 			ht.hintPrintln (hintcount);
 			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			reasoningInput();
 		}else if(hintcount==2) {
-			ht = new Hint("범인힌트2-1","범인힌트2-2","살해동기2-1","살해동기2-2","도구2-1","도구2-2");
+			ht = new Hint("거친","몸","이기적인","약속","작은","갈증");
 			ht.hintPrintln (hintcount);
 			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			reasoningInput();
 		}else if(hintcount==3) {
-			ht = new Hint("범인힌트3-1","범인힌트3-2","살해동기3-1","살해동기3-2","도구3-1","도구3-2");
+			ht = new Hint("용감한","기술","답답한","대화","아름다운","꽃");
 			ht.hintPrintln (hintcount);
 			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			reasoningInput();
