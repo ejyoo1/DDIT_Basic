@@ -61,33 +61,57 @@ public class User {
 		}
 	}
 	
+	boolean inputNullCheck(String[] checkUserInput) {//사용자 입력값 null체크
+		System.out.println("사용자 입력값 널 체크 : " + Arrays.toString (checkUserInput));
+		boolean flag = true;//사용자 입력에 널이 없음.
+		for(int i = 0 ; i < checkUserInput.length ; i++) {
+			if(checkUserInput[i].equals ("")) {
+				System.out.println ("다시 입력하세요.");
+				flag = false;//사용자 입력에 널이 있음
+			}
+		}
+		return flag;
+	}
+	
 	String[] inputCriminal() {//범인을 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
-		System.out.println ("[제거] 범인이 아닐 것 같은 직업이 있습니까? 있다면 입력하세요.");
-		String[] userAnswerCriminal = sc.nextLine ().split (",");
-		System.out.println (userAnswerCriminal.length);
-		//공백 검사
-		for(int i = 0 ; i < userAnswerCriminal.length ; i++) {
-			if(userAnswerCriminal[i].equals ("")) {
-				System.out.println ("다시 입력하세요.");
-				userAnswerCriminal = null;
-				userAnswerCriminal = sc.nextLine ().split (",");
-			}
+		boolean flag = false;//사용자 입력에 널이 있다고 가정
+		String[] userAnswerCriminal = null;//반복으로 인하여 초기화코드 추가
+		while(!flag) {
+			System.out.println ("[제거] 범인이 아닐 것 같은 직업이 있습니까? 있다면 입력하세요.");
+			userAnswerCriminal = sc.nextLine ().split (",");
+			System.out.println (userAnswerCriminal.length);
+			//공백 검사
+			flag = inputNullCheck(userAnswerCriminal);
 		}
 		return userAnswerCriminal;
 	}
 	
 	String[] inputMotivation() {//살해동기를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
-		System.out.println ("[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요.");
-		String[] userAnswerMotivation = sc.nextLine ().split (",");
+		boolean flag = false;
+		String[] userAnswerMotivation = null;
+		while(!flag) {
+			System.out.println ("[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요.");
+			userAnswerMotivation = sc.nextLine ().split (",");
+			System.out.println (userAnswerMotivation.length);
+			//공백 검사
+			flag = inputNullCheck(userAnswerMotivation);
+		}
 		return userAnswerMotivation;
 	}
 	
 	String[] inputTool() {//살해도구를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
-		System.out.println ("[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요.");
-		String[] userAnswerTool = sc.nextLine ().split (",");
+		boolean flag = false;
+		String[] userAnswerTool = null;
+		while(!flag) {
+			System.out.println ("[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요.");
+			userAnswerTool = sc.nextLine ().split (",");
+			System.out.println (userAnswerTool.length);
+			//공백 검사
+			flag = inputNullCheck(userAnswerTool);
+		}
 		return userAnswerTool;
 	}
 	

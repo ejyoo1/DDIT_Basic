@@ -13,8 +13,10 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="3"/>
+		<item key="selection" value="다시"/>
 		<list key="findhistory">
+			<item value="다시"/>
+			<item value="Process"/>
 			<item value="3"/>
 			<item value="reasoningInput"/>
 			<item value="reason"/>
@@ -28,8 +30,6 @@
 			<item value="showmanman"/>
 			<item value="putmancart"/>
 			<item value="주문관리"/>
-			<item value="관리자 홈"/>
-			<item value="관리자"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student2"/>
