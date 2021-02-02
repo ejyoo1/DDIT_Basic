@@ -30,6 +30,63 @@ public class User {
 		return criminalflag;
 	}
 	
+	boolean motivationVerification(String[] userAnswer) {//유효성 검사 추가
+		Card card = new Card();
+		while(true) {
+			boolean result = reasoningInputChecker(userAnswer,"Motivation");//true : 유효성검사 성공, false : 유효성 검사 실패
+			//System.out.println ("result : " + result);
+			if(result) {
+				break;
+			}else {
+				System.out.println ("올바른 '살해동기' 카드를 입력해주세요.");
+				userAnswer = inputMotivation();
+			}
+		}
+		boolean motivationflag = card.cardCheckerMotivation(userAnswer);
+		
+		//System.out.println ("총 사용자 입력값 : " + userAnswer);
+		//System.out.println ("criminalflag 추리 결과 : " + criminalflag);//true : 추리성공, false : 추리실패 
+		/*
+		if(criminalflag) {
+			System.out.println ("추리성공");
+		}else {
+			System.out.println ("추리실패");
+		}
+		*/
+		return motivationflag;
+	}
+	
+	
+	boolean toolVerification(String[] userAnswer) {//유효성 검사 추가
+		Card card = new Card();
+		while(true) {
+			boolean result = reasoningInputChecker(userAnswer,"Tool");//true : 유효성검사 성공, false : 유효성 검사 실패
+			//System.out.println ("result : " + result);
+			if(result) {
+				break;
+			}else {
+				System.out.println ("올바른 '살해도구' 카드를 입력해주세요.");
+				userAnswer = inputTool();
+			}
+		}
+		boolean toolflag = card.cardCheckerTool(userAnswer);
+		
+		//System.out.println ("총 사용자 입력값 : " + userAnswer);
+		//System.out.println ("criminalflag 추리 결과 : " + criminalflag);//true : 추리성공, false : 추리실패 
+		/*
+		if(criminalflag) {
+			System.out.println ("추리성공");
+		}else {
+			System.out.println ("추리실패");
+		}
+		*/
+		return toolflag;
+	}
+	
+	
+	
+	
+	
 	void reasoningInput(int hintcount) {//힌트를 본 후 관련없는 카드를 제거하기 위한 메서드
 		//System.out.println ("reasoningInput 호출");
 		Card card = new Card();
@@ -46,69 +103,24 @@ public class User {
 				userAnswerCriminal = null;
 			}
 			
-						
-			/*if(userAnswerCount==6) {
-				reasoningProcess(userAnswerCriminal, userAnswerMotivation, userAnswerTool, totalflag);
-				break;
-			}*/
 			
-			
+			String[] userAnswerMotivation = inputMotivation();
 			boolean motivationflag = true;
-			String[] userAnswerMotivation = null;
-			if(userAnswerCount < 6) {
-				userAnswerMotivation = inputMotivation();
-				//유효성 검사 추가
-				while(true) {
-					boolean result = reasoningInputChecker(userAnswerMotivation,"Motivation");//true : 유효성검사 성공, false : 유효성 검사 실패
-					if(result) {
-						break;
-					}else {
-						System.out.println ("올바른 '살해동기' 카드를 입력해주세요.");
-						userAnswerMotivation = inputMotivation();
-					}
-				}
-							
-				motivationflag = card.cardCheckerMotivation(userAnswerMotivation);
+			if(!userAnswerMotivation[0].equals ("NO")) {
+				motivationflag = motivationVerification(userAnswerMotivation);
 				userAnswerCount += userAnswerMotivation.length;
-				//System.out.println ("총 사용자 입력값 : " + userAnswerCount);
-				//System.out.println ("motivationflag 추리 결과 : " + motivationflag);
-				/*
-				if(motivationflag) {
-					System.out.println ("추리성공");
-				}else {
-					System.out.println ("추리실패");
-				}
-				*/
+			}else {
+				userAnswerMotivation = null;
 			}
 			
 			
+			String[] userAnswerTool = inputTool();	
 			boolean toolflag = true;
-			String[] userAnswerTool = null;
-			if(userAnswerCount < 6) {
-				userAnswerTool = inputMotivation();
-				//유효성 검사 추가
-				while(true) {
-					boolean result = reasoningInputChecker(userAnswerTool,"Tool");//true : 유효성검사 성공, false : 유효성 검사 실패
-					if(result) {
-						break;
-					}else {
-						System.out.println ("올바른 '살해도구' 카드를 입력해주세요.");
-						userAnswerTool = inputTool();
-					}
-				}
-				
-				
-				toolflag = card.cardCheckTool(userAnswerTool);
+			if(!userAnswerTool[0].equals ("NO")) {
+				toolflag = toolVerification(userAnswerTool);
 				userAnswerCount += userAnswerTool.length;
-				//System.out.println ("총 사용자 입력값 : " + userAnswerCount);
-				//System.out.println ("toolflag 추리 결과 : " + toolflag);
-				/*
-				if(toolflag) {
-					System.out.println ("추리성공");
-				}else {
-					System.out.println ("추리실패");
-				}
-				*/
+			}else {
+				userAnswerTool = null;
 			}
 				
 			//추리 최종결과
@@ -183,9 +195,12 @@ public class User {
 		boolean flag = false;
 		String[] userAnswerMotivation = null;
 		while(!flag) {
-			System.out.println ("[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요.");
+			System.out.println ("[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerMotivation = sc.nextLine ().split (",");
 			//System.out.println (userAnswerMotivation.length);
+			if(userAnswerMotivation[0].equals ("NO")) {
+				break;
+			}
 			//공백 검사
 			flag = inputNullCheck(userAnswerMotivation);
 		}
@@ -197,9 +212,12 @@ public class User {
 		boolean flag = false;
 		String[] userAnswerTool = null;
 		while(!flag) {
-			System.out.println ("[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요.");
+			System.out.println ("[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerTool = sc.nextLine ().split (",");
 			//System.out.println (userAnswerTool.length);
+			if(userAnswerTool[0].equals ("NO")) {
+				break;
+			}
 			//공백 검사
 			flag = inputNullCheck(userAnswerTool);
 		}
@@ -304,7 +322,8 @@ public class User {
 			System.out.println ("userInputAnswer[0].equals (Card.round_answer[0]) 결과 : " + userInputAnswer[0].equals (Card.round_answer[0]));
 			System.out.println ("userInputAnswer[1].equals (Card.round_answer[1]) 결과 : " + userInputAnswer[1].equals (Card.round_answer[1]));
 			System.out.println ("userInputAnswer[2].equals (Card.round_answer[2]) 결과 : " + userInputAnswer[2].equals (Card.round_answer[2]));
-			System.out.println ("추리에 실패하였습니다.");
+			System.out.println ("추리에 실패하였습니다. 추리토큰 하나가 차감됩니다.");
+			
 		}
 	}
 	

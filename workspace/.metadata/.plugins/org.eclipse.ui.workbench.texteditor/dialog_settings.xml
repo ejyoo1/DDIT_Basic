@@ -13,8 +13,12 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="userMenu"/>
+		<item key="selection" value="없으면 &apos;NO&apos;를 입력"/>
 		<list key="findhistory">
+			<item value="없으면 &apos;NO&apos;를 입력"/>
+			<item value="inputMotivation"/>
+			<item value="적합하지 않는 살해 동기가"/>
+			<item value="소진되었습니다"/>
 			<item value="userMenu"/>
 			<item value="추리 실패"/>
 			<item value="println"/>
@@ -26,10 +30,6 @@
 			<item value="inputCriminal"/>
 			<item value="사용자 입력값 널 체크"/>
 			<item value="totalflag"/>
-			<item value="다시"/>
-			<item value="Process"/>
-			<item value="3"/>
-			<item value="reason"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student2"/>

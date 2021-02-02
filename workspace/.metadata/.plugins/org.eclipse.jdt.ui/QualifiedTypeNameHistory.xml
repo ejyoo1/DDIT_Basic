@@ -55,9 +55,9 @@
     <fullyQualifiedTypeName name="e_oop.ScanUtil"/>
     <fullyQualifiedTypeName name="sub.DyingMessage"/>
     <fullyQualifiedTypeName name="sun.applet.Main"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.lang.Deprecated"/>
     <fullyQualifiedTypeName name="g_oop2.Desktop"/>
     <fullyQualifiedTypeName name="g_oop2.Customer"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

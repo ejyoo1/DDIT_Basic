@@ -49,7 +49,7 @@ public class Card {
 	}
 		
 	//살해도구가 아닌 카드 체크 : 사용자 입력 중 정답인 살해도구가 있으면 false(추리실패)/ 정답인 살해도구가 없으면 true(추리성공)	
-	boolean cardCheckTool (String[] userAnswerTool) {
+	boolean cardCheckerTool (String[] userAnswerTool) {
 		//System.out.println ("사용자가 입력한 살해도구 " + Arrays.toString (userAnswerTool));
 		boolean flag = true;
 		for(int i = 0 ; i < userAnswerTool.length ; i++ ) {

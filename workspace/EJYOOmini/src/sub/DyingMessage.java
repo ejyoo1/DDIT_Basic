@@ -7,6 +7,10 @@ public class DyingMessage{
 	static String criminalHint = "";
 	static String motivationHint = "";
 	static String toolHint = "";
+	static int criminalCountNum = 1;
+	static int motivationCountNum = 1;
+	static int toolCountNum = 1;
+	
 	public static void main (String[] args) {
 		
 		System.out.println("다잉메세지. 소설가가 남긴 마지막 메세지");

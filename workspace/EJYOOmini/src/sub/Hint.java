@@ -5,15 +5,14 @@ import java.util.Scanner;
 public class Hint {
 	String[] criminalAdjective = {"외로운","거친","용감한","빠른"};
 	String[] criminalNoun = {"사각형","몸","기술","접촉"};
-	int criminalCount = 1;
 	
 	String[] motivationAdjective = {"치사한","이기적인","답답한","계산적인"};
 	String[] motivationNoun = {"머리","약속","대화","압박"};
-	int motivationCount = 1;
+	
 	
 	String[] toolAdjective = {"딱딱한","작은","아르마운","냄새나는"};
 	String[] toolNoun = {"원","갈증","꽃","나무"};
-	int toolCount = 1;
+	
 	
 	String criminalHint1;
 	String criminalHint2;
@@ -32,6 +31,40 @@ public class Hint {
 		this.toolHint1			= toolHint1;
 		this.toolHint2			= toolHint2;
 	}
+	void cardCount(int criminalCountNum, int motivationCountNum, int toolCountNum) {
+		System.out.println ("criminalCountNum : " + criminalCountNum + " motivationCountNum : " + motivationCountNum + " toolCountNum : " + toolCountNum);
+		Card cd = new Card();
+		System.out.print ("■■ 범인 힌트 : ");
+		for(int i = 0 ; i < criminalCountNum ; i++) {
+			System.out.print (criminalAdjective[i] + ", " + criminalNoun[i]);
+			System.out.print("★");
+		}
+		System.out.println ();
+		cd.cardPrintln("criminal");
+		System.out.println ("---------------------------------------------------------------------------------------------");
+		System.out.println ();
+		
+		System.out.print ("■■ 살해동기 힌트 : ");
+		for(int i = 0 ; i < motivationCountNum ; i++) {
+			System.out.print (motivationAdjective[i] + ", " + motivationNoun[i]);
+			System.out.print("★");
+		}
+		System.out.println ();
+		cd.cardPrintln("motivation");
+		System.out.println ("---------------------------------------------------------------------------------------------");
+		System.out.println ();
+		
+		System.out.print ("■■ 범행도구 힌트 : ");
+		for(int i = 0 ; i < toolCountNum ; i++) {
+			System.out.print (toolAdjective[i] + ", " + toolNoun[i]);
+			System.out.print("★");
+		}
+		System.out.println ();
+		cd.cardPrintln("tool");
+		System.out.println ("---------------------------------------------------------------------------------------------");
+		System.out.println ();
+	}
+	/*
 	void criminalCount(int count) {
 		Card cd = new Card();
 		System.out.println ("count : " + count);
@@ -45,6 +78,35 @@ public class Hint {
 		System.out.println ("---------------------------------------------------------------------------------------------");
 		System.out.println ();
 	}
+	
+	void motivationCount(int count) {
+		Card cd = new Card();
+		System.out.println ("count : " + count);
+		System.out.print ("■■ 살해동기 힌트 : ");
+		for(int i = 0 ; i < count ; i++) {
+			System.out.print (motivationAdjective[i] + ", " + motivationNoun[i]);
+			System.out.print("★");
+		}
+		System.out.println ();
+		cd.cardPrintln("motivation");
+		System.out.println ("---------------------------------------------------------------------------------------------");
+		System.out.println ();
+	}
+	
+	void toolCount(int count) {
+		Card cd = new Card();
+		System.out.println ("count : " + count);
+		System.out.print ("■■ 범행도구 힌트 : ");
+		for(int i = 0 ; i < count ; i++) {
+			System.out.print (toolAdjective[i] + ", " + toolNoun[i]);
+			System.out.print("★");
+		}
+		System.out.println ();
+		cd.cardPrintln("tool");
+		System.out.println ("---------------------------------------------------------------------------------------------");
+		System.out.println ();
+	}
+	*/
 	
 	void hintPrintln(int hintcount) {//힌트목록을 출력하기 위함
 		Card cd = new Card();
@@ -71,25 +133,61 @@ public class Hint {
 			System.out.println ();
 		}else if(hintcount==2) {
 			Scanner sc = new Scanner(System.in);
-			System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
-			String userChoice = sc.nextLine();
-			if(userChoice.equals ("범인")) {
-				criminalCount(hintcount);
+			while(true) {
+				System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
+				String userChoice = sc.nextLine();
+				if(userChoice.equals ("범인")) {
+					DyingMessage.criminalCountNum++;
+					break;
+				}else if(userChoice.equals ("살해동기")) {
+					DyingMessage.motivationCountNum++;
+					break;
+				}else if(userChoice.equals ("살해도구")) {
+					DyingMessage.toolCountNum++;
+					break;
+				}else {
+					System.out.println ("잘못된 입력입니다. 다시 입력하세요.");
+				}
 			}
+			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 		}else if(hintcount==3) {
 			Scanner sc = new Scanner(System.in);
-			System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
-			String userChoice = sc.nextLine();
-			if(userChoice.equals ("범인")) {
-				criminalCount(hintcount);
+			while(true) {
+				System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
+				String userChoice = sc.nextLine();
+				if(userChoice.equals ("범인")) {
+					DyingMessage.criminalCountNum++;
+					break;
+				}else if(userChoice.equals ("살해동기")) {
+					DyingMessage.motivationCountNum++;
+					break;
+				}else if(userChoice.equals ("살해도구")) {
+					DyingMessage.toolCountNum++;
+					break;
+				}else {
+					System.out.println ("잘못된 입력입니다. 다시 입력하세요.");
+				}
 			}
+			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 		}else if(hintcount==4) {
 			Scanner sc = new Scanner(System.in);
-			System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
-			String userChoice = sc.nextLine();
-			if(userChoice.equals ("범인")) {
-				criminalCount(hintcount);
+			while(true) {
+				System.out.print ("어디에 힌트를 얻겠습니까? (범인,살해동기,살해도구) >> ");
+				String userChoice = sc.nextLine();
+				if(userChoice.equals ("범인")) {
+					DyingMessage.criminalCountNum++;
+					break;
+				}else if(userChoice.equals ("살해동기")) {
+					DyingMessage.motivationCountNum++;
+					break;
+				}else if(userChoice.equals ("살해도구")) {
+					DyingMessage.toolCountNum++;
+					break;
+				}else {
+					System.out.println ("잘못된 입력입니다. 다시 입력하세요.");
+				}
 			}
+			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 		}
 		
 		
@@ -138,7 +236,7 @@ public class Hint {
 			System.out.println ("toolHint : " + DyingMessage.toolHint);
 			*/
 			
-			ht.hintPrintln (hintcount);
+			ht.cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 			users.reasoningInput(hintcount);
 			hintcount++;
 		}else if(hintcount==2) {
