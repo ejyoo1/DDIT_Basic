@@ -55,14 +55,14 @@ public class DyingMessage{
 	}
 	
 	
-	String userMenu() {//제공된 힌트수에 따라 힌트 제한
+	static String userMenu() {//제공된 힌트수에 따라 힌트 제한
 		String userSetMenu;
 		if(hintcount==1 || hintcount==2 || hintcount==3|| hintcount==4 ) {//힌트를 3회까지 얻을 수 있음.
 			userSetMenu = "당신은 힌트를 얻겠습니까? 정답을 맞추시겠습니까? (힌트얻기 / 정답맞추기 / 정답보기 / 게임종료)";
 		}else {//힌트 3회를 모두 소진하는 경우]
 			System.out.println (hintcount);
 			System.out.println ("힌트 기회를 모두 사용하였습니다. 당신은 이제 소설가를 죽인 범인을 잡아야합니다.");
-			userSetMenu = "정답을 맞추시겠습니까? 포기하고 정답을 보겠습니까? (정답맞추기 / 정답보기)";
+			userSetMenu = "정답을 맞추시겠습니까? 포기하고 정답을 보겠습니까? (정답맞추기 / 정답보기 / 힌트모두보기)";
 		}
 		return userSetMenu;
 	}
@@ -87,6 +87,9 @@ public class DyingMessage{
 				break;
 			case "정답보기" :
 				users.userAnswer ();
+				break;
+			case "힌트모두보기" :
+				Hint.cardCount(criminalCountNum,motivationCountNum,toolCountNum);
 				break;
 			default : 
 				System.out.println ("없는메뉴입니다. 다시 입력해주세요.");

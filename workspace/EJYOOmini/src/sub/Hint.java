@@ -3,15 +3,15 @@ package sub;
 import java.util.Scanner;
 
 public class Hint {
-	String[] criminalAdjective = {"외로운","거친","용감한","빠른"};
-	String[] criminalNoun = {"사각형","몸","기술","접촉"};
+	static String[] criminalAdjective = {"외로운","거친","용감한","빠른"};
+	static String[] criminalNoun = {"사각형","몸","기술","접촉"};
 	
-	String[] motivationAdjective = {"치사한","이기적인","답답한","계산적인"};
-	String[] motivationNoun = {"머리","약속","대화","압박"};
+	static String[] motivationAdjective = {"치사한","이기적인","답답한","계산적인"};
+	static String[] motivationNoun = {"머리","약속","대화","압박"};
 	
 	
-	String[] toolAdjective = {"딱딱한","작은","아르마운","냄새나는"};
-	String[] toolNoun = {"원","갈증","꽃","나무"};
+	static String[] toolAdjective = {"딱딱한","작은","아르마운","냄새나는"};
+	static String[] toolNoun = {"원","갈증","꽃","나무"};
 	
 	
 	String criminalHint1;
@@ -31,7 +31,7 @@ public class Hint {
 		this.toolHint1			= toolHint1;
 		this.toolHint2			= toolHint2;
 	}
-	void cardCount(int criminalCountNum, int motivationCountNum, int toolCountNum) {
+	static void cardCount(int criminalCountNum, int motivationCountNum, int toolCountNum) {
 		System.out.println ("criminalCountNum : " + criminalCountNum + " motivationCountNum : " + motivationCountNum + " toolCountNum : " + toolCountNum);
 		Card cd = new Card();
 		System.out.print ("■■ 범인 힌트 : ");

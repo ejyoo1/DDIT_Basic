@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class User {
 	boolean criminalVerification(String[] userAnswer) {//유효성 검사 추가
 		Card card = new Card();
+		System.out.println ("■받아온값" + userAnswer[0] + userAnswer[1]);
 		while(true) {
 			boolean result = reasoningInputChecker(userAnswer,"Criminal");//true : 유효성검사 성공, false : 유효성 검사 실패
 			//System.out.println ("result : " + result);
@@ -95,13 +96,18 @@ public class User {
 		
 		while(true) {//카드가 6장이 아닌경우에 계속 반복 : 6장이면 반복을 하지 않음.
 			String[] userAnswerCriminal = inputCriminal();
+			System.out.println ("■함수 inputCriminal 호출 후 받은 값 : " + userAnswerCriminal[0] + userAnswerCriminal[1]);
 			boolean criminalflag = true;
+			///////////////////여기 코드 이상해....
 			if(!userAnswerCriminal[0].equals ("NO")) {
+				System.out.println ("■userAnswerCriminal 전 : " + userAnswerCriminal[0] + userAnswerCriminal[1]);
 				criminalflag = criminalVerification(userAnswerCriminal);
+				System.out.println ("■함수 criminalVerification 호출 후 받은 값 : " + userAnswerCriminal[0] + userAnswerCriminal[1]);
 				userAnswerCount += userAnswerCriminal.length;
 			}else {
 				userAnswerCriminal = null;
 			}
+			System.out.println ("■userAnswerCriminal 후 : " + userAnswerCriminal[0] + userAnswerCriminal[1]);
 			
 			
 			String[] userAnswerMotivation = inputMotivation();
@@ -173,20 +179,26 @@ public class User {
 	String[] inputCriminal() {//범인을 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		boolean flag = false;//사용자 입력에 널이 있다고 가정
+		
 		String[] userAnswerCriminal = null;//반복으로 인하여 초기화코드 추가
 		while(!flag) {
 			System.out.println ("[제거] 범인이 아닐 것 같은 직업이 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerCriminal = sc.nextLine ().split (",");
 			//System.out.println (userAnswerCriminal[0]);
+			//System.out.println ("inputCriminl 데이터" + userAnswerCriminal[0]+userAnswerCriminal[1]);
 			if(userAnswerCriminal[0].equals ("NO")) {
 				
 				//System.out.println ("조건문에 맞음");
 				break;
-			}
+			}else {
 			//System.out.println (userAnswerCriminal.length);
 			//공백 검사
-			flag = inputNullCheck(userAnswerCriminal);
+				//System.out.println ("inputCriminl 데이터" + userAnswerCriminal[0]+userAnswerCriminal[1]);
+				flag = inputNullCheck(userAnswerCriminal);
+				//System.out.println ("inputCriminl 데이터 후" + userAnswerCriminal[0]+userAnswerCriminal[1]);
+			}
 		}
+		//System.out.println ("최종 넘겨주는 데이터 : " + userAnswerCriminal[0]+userAnswerCriminal[1]);
 		return userAnswerCriminal;
 	}
 	
@@ -323,7 +335,8 @@ public class User {
 			System.out.println ("userInputAnswer[1].equals (Card.round_answer[1]) 결과 : " + userInputAnswer[1].equals (Card.round_answer[1]));
 			System.out.println ("userInputAnswer[2].equals (Card.round_answer[2]) 결과 : " + userInputAnswer[2].equals (Card.round_answer[2]));
 			System.out.println ("추리에 실패하였습니다. 추리토큰 하나가 차감됩니다.");
-			
+			DyingMessage.hintcount++;
+			DyingMessage.userMenu();
 		}
 	}
 	
