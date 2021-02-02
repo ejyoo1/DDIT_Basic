@@ -216,9 +216,6 @@ public class Hint {
 		*/
 	}
 	
-	
-	
-	
 	int userHint(int hintcount) {
 		User users = new User();
 		
@@ -236,7 +233,7 @@ public class Hint {
 			System.out.println ("toolHint : " + DyingMessage.toolHint);
 			*/
 			
-			ht.cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
+			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 			users.reasoningInput(hintcount);
 			hintcount++;
 		}else if(hintcount==2) {

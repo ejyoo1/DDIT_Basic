@@ -10,6 +10,10 @@ public class DyingMessage{
 	static int criminalCountNum = 1;
 	static int motivationCountNum = 1;
 	static int toolCountNum = 1;
+	static int userAnswerCount = 0;
+	static boolean criminalflag = true;
+	static boolean motivationflag = true;
+	static boolean toolflag = true;
 	
 	public static void main (String[] args) {
 		
@@ -90,6 +94,7 @@ public class DyingMessage{
 				break;
 			case "힌트모두보기" :
 				Hint.cardCount(criminalCountNum,motivationCountNum,toolCountNum);
+				userMenuSettings();
 				break;
 			default : 
 				System.out.println ("없는메뉴입니다. 다시 입력해주세요.");

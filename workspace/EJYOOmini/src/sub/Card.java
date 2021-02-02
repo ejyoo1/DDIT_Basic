@@ -61,7 +61,6 @@ public class Card {
 		return flag;
 	}
 	
-	
 	void cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
 		//System.out.println ("cardDel호출");
 		//System.out.println (Arrays.toString (userAnswerCriminal));
