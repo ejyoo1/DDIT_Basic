@@ -32,7 +32,6 @@ public class Hint {
 		this.toolHint2			= toolHint2;
 	}
 	static void cardCount(int criminalCountNum, int motivationCountNum, int toolCountNum) {
-		System.out.println ("criminalCountNum : " + criminalCountNum + " motivationCountNum : " + motivationCountNum + " toolCountNum : " + toolCountNum);
 		Card cd = new Card();
 		System.out.print ("■■ 범인 힌트 : ");
 		for(int i = 0 ; i < criminalCountNum ; i++) {
@@ -64,49 +63,6 @@ public class Hint {
 		System.out.println ("---------------------------------------------------------------------------------------------");
 		System.out.println ();
 	}
-	/*
-	void criminalCount(int count) {
-		Card cd = new Card();
-		System.out.println ("count : " + count);
-		System.out.print ("■■ 범인 힌트 : ");
-		for(int i = 0 ; i < count ; i++) {
-			System.out.print (criminalAdjective[i] + ", " + criminalNoun[i]);
-			System.out.print("★");
-		}
-		System.out.println ();
-		cd.cardPrintln("criminal");
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-	}
-	
-	void motivationCount(int count) {
-		Card cd = new Card();
-		System.out.println ("count : " + count);
-		System.out.print ("■■ 살해동기 힌트 : ");
-		for(int i = 0 ; i < count ; i++) {
-			System.out.print (motivationAdjective[i] + ", " + motivationNoun[i]);
-			System.out.print("★");
-		}
-		System.out.println ();
-		cd.cardPrintln("motivation");
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-	}
-	
-	void toolCount(int count) {
-		Card cd = new Card();
-		System.out.println ("count : " + count);
-		System.out.print ("■■ 범행도구 힌트 : ");
-		for(int i = 0 ; i < count ; i++) {
-			System.out.print (toolAdjective[i] + ", " + toolNoun[i]);
-			System.out.print("★");
-		}
-		System.out.println ();
-		cd.cardPrintln("tool");
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-	}
-	*/
 	
 	void hintPrintln(int hintcount) {//힌트목록을 출력하기 위함
 		Card cd = new Card();
@@ -189,99 +145,31 @@ public class Hint {
 			}
 			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 		}
-		
-		
-		
-		/*
-		System.out.print ("■■ 범인 힌트" + (hintcount) +  " : " + criminalHint1 + ", " + criminalHint2 + " ■■");
-		System.out.println ();
-		cd.cardPrintln("criminal");//범인 목록을 보기위한 메서드
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-		
-		
-		System.out.print ("■■ 살해동기 힌트" + (hintcount) +  " : " + motivationHint1 + ", " + motivationHint2 + " ■■");
-		System.out.println ();
-		cd.cardPrintln("motivation");//살해동기 목록을 보기위한 메서드
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-		
-		
-		
-		System.out.print ("■■ 살해도구 힌트" + (hintcount) +  " : " + toolHint1 + ", " + toolHint2 + " ■■");
-		System.out.println ();
-		cd.cardPrintln("tool");//살해도구 목록을 보기위한 메서드
-		System.out.println ("---------------------------------------------------------------------------------------------");
-		System.out.println ();
-		*/
 	}
 	
 	int userHint(int hintcount) {
 		User users = new User();
 		
 		System.out.println ((hintcount)+"번째 힌트입니다.");
-		Hint ht;
+		Hint ht = new Hint();
 		if(hintcount==1) {
-			ht = new Hint("외로운","사각형","치사한","머리","딱딱한","원");
-			
-			/*
-			DyingMessage.criminalHint += (ht.criminalHint1 + "," + ht.criminalHint2+",");
-			System.out.println ("criminalHint : " + DyingMessage.criminalHint);
-			DyingMessage.motivationHint += (ht.motivationHint1 + "," + ht.motivationHint2+",");
-			System.out.println ("motivationHint : " + DyingMessage.motivationHint);
-			DyingMessage.toolHint += (ht.toolHint1 + "," + ht.toolHint2+",");
-			System.out.println ("toolHint : " + DyingMessage.toolHint);
-			*/
-			
 			cardCount(DyingMessage.criminalCountNum, DyingMessage.motivationCountNum, DyingMessage.toolCountNum);
 			users.reasoningInput(hintcount);
 			hintcount++;
 		}else if(hintcount==2) {
-			ht = new Hint("거친","몸","이기적인","약속","작은","갈증");
-			
-			/*
-			DyingMessage.criminalHint += (ht.criminalHint1 + "," + ht.criminalHint2+",");
-			System.out.println ("criminalHint : " + DyingMessage.criminalHint);
-			DyingMessage.motivationHint += (ht.motivationHint1 + "," + ht.motivationHint2+",");
-			System.out.println ("motivationHint : " + DyingMessage.motivationHint);
-			DyingMessage.toolHint += (ht.toolHint1 + "," + ht.toolHint2+",");
-			System.out.println ("toolHint : " + DyingMessage.toolHint);
-			*/
-			
 			ht.hintPrintln (hintcount);
 			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			users.reasoningInput(hintcount);
 			hintcount++;
 		}else if(hintcount==3) {
-			ht = new Hint("용감한","기술","답답한","대화","아름다운","꽃");
-			
-			/*
-			DyingMessage.criminalHint += (ht.criminalHint1 + "," + ht.criminalHint2+",");
-			System.out.println ("criminalHint : " + DyingMessage.criminalHint);
-			DyingMessage.motivationHint += (ht.motivationHint1 + "," + ht.motivationHint2+",");
-			System.out.println ("motivationHint : " + DyingMessage.motivationHint);
-			DyingMessage.toolHint += (ht.toolHint1 + "," + ht.toolHint2+",");
-			System.out.println ("toolHint : " + DyingMessage.toolHint);
-			*/
-			
 			ht.hintPrintln (hintcount);
 			System.out.println (hintcount+"번째 추리를 시작합니다. 이번 사건과 관련없는 카드 6개를 입력하세요. [카드입력형식] : '카드이름1,카드이름2,...,카드이름5'");
 			users.reasoningInput(hintcount);
 			hintcount++;
 		}else if(hintcount==4) {
-			DyingMessage dm = new DyingMessage();
-			ht = new Hint("빠른","접촉","계산적인","압박","냄새나는","나무");
-			
-			DyingMessage.criminalHint += (ht.criminalHint1 + "," + ht.criminalHint2);
-			System.out.println ("criminalHint : " + DyingMessage.criminalHint);
-			DyingMessage.motivationHint += (ht.motivationHint1 + "," + ht.motivationHint2);
-			System.out.println ("motivationHint : " + DyingMessage.motivationHint);
-			DyingMessage.toolHint += (ht.toolHint1 + "," + ht.toolHint2);
-			System.out.println ("toolHint : " + DyingMessage.toolHint);
-			
 			ht.hintPrintln (hintcount);
 			System.out.println ("사용할 수 있는 힌트가 모두 소진되었습니다.");
-			dm.userMenu();
+			DyingMessage.userMenu();
 			hintcount++;
 		}
 		return hintcount;

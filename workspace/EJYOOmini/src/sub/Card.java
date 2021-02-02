@@ -1,7 +1,5 @@
 package sub;
 
-import java.util.Arrays;
-
 public class Card {
 	static String[] round_answer = {"복서", "협박", "화분"};
 	int USER_VIEW_CARD 	= 9;
@@ -62,10 +60,6 @@ public class Card {
 	}
 	
 	void cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
-		//System.out.println ("cardDel호출");
-		//System.out.println (Arrays.toString (userAnswerCriminal));
-		//System.out.println (Arrays.toString (userAnswerMotivation));
-		//System.out.println (Arrays.toString (userAnswerTool));
 		boolean flag = false;
 		
 		if(userAnswerCriminal!=null) {
