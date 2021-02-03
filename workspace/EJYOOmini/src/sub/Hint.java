@@ -23,6 +23,7 @@ public class Hint {
 	
 	Hint(){	}
 	
+	//게임 시작 시 기본 힌트 세팅
 	Hint(String criminalHint1, String criminalHint2, String motivationHint1, String motivationHint2, String toolHint1, String toolHint2){
 		this.criminalHint1 		= criminalHint1;
 		this.criminalHint2 		= criminalHint2;
@@ -31,6 +32,8 @@ public class Hint {
 		this.toolHint1			= toolHint1;
 		this.toolHint2			= toolHint2;
 	}
+	
+	//2번째판 이상부터 선택적 힌트 설정 메서드
 	static void cardCount(int criminalCountNum, int motivationCountNum, int toolCountNum) {
 		Card cd = new Card();
 		System.out.print ("■■ 범인 힌트 : ");
@@ -64,6 +67,7 @@ public class Hint {
 		System.out.println ();
 	}
 	
+	//선택적 힌트 출력 메서드
 	void hintPrintln(int hintcount) {//힌트목록을 출력하기 위함
 		Card cd = new Card();
 		if(hintcount==1) {
@@ -147,6 +151,7 @@ public class Hint {
 		}
 	}
 	
+	//힌트 제공받은 후 사용자 추리 시작을 알리는 메서드
 	int userHint(int hintcount) {
 		User users = new User();
 		

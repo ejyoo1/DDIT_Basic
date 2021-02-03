@@ -59,6 +59,7 @@ public class Card {
 		return flag;
 	}
 	
+	//추리완료된 카드 삭제 메서드
 	void cardDel(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool) {
 		boolean flag = false;
 		

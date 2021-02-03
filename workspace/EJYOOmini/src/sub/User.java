@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class User {
+	
+	//범인 카드 목록에 없는 카드를 입력한 경우
 	boolean criminalVerification(String[] userAnswer) {//유효성 검사 추가
 		boolean flag = false;
 		boolean result = reasoningInputChecker(userAnswer,"Criminal");//true : 유효성검사 성공, false : 유효성 검사 실패
@@ -16,12 +18,14 @@ public class User {
 		return flag;
 	}
 	
+	//범인 카드 정답판별 메서드 호출
 	boolean criminalCardCheck(String[] userAnswer) {//제거할 값이 추리 성공인지 확인
 		Card card = new Card();
 		boolean criminalflag = card.cardCheckerCriminal(userAnswer);
 		return criminalflag;
 	}
 	
+	//범행동기 카드 목록에 없는 카드를 입력한 경우
 	boolean motivationVerification(String[] userAnswer) {//유효성 검사 추가
 		boolean flag = false;
 		boolean result = reasoningInputChecker(userAnswer,"Motivation");//true : 유효성검사 성공, false : 유효성 검사 실패
@@ -34,12 +38,14 @@ public class User {
 		return flag;
 	}
 	
+	//범행동기 카드 정답판별 메서드 호출
 	boolean motivationCardCheck(String[] userAnswer) { 
 		Card card = new Card();
 		boolean motivationflag = card.cardCheckerMotivation(userAnswer);
 		return motivationflag;
 	}
 	
+	//범행도구 카드 목록에 없는 카드를 입력한 경우
 	boolean toolVerification(String[] userAnswer) {//유효성 검사 추가
 		boolean flag = false;
 		boolean result = reasoningInputChecker(userAnswer,"Tool");//true : 유효성검사 성공, false : 유효성 검사 실패
@@ -52,12 +58,14 @@ public class User {
 		return flag;
 	}
 	
+	//범행도구 카드 정답판별 메서드 호출
 	boolean toolCardCheck(String[] userAnswer) {
 		Card card = new Card();
 		boolean toolflag = card.cardCheckerTool(userAnswer);
 		return toolflag;
 	}
 	
+	//제거할 범인 카드가 없는 경우('NO')메서드
 	String[] reasoningInputCriminal(int hintcount) {
 		String[] userAnswerCriminal = null;
 		DyingMessage.criminalflag = true;
@@ -72,6 +80,7 @@ public class User {
 		return userAnswerCriminal;
 	}
 	
+	//제거할 범행동기 카드가 없는 경우('NO')메서드
 	String[] reasoningInputMotivation(int hintcount) {
 		String[] userAnswerMotivation = null;
 		DyingMessage.motivationflag = true;
@@ -86,6 +95,7 @@ public class User {
 		return userAnswerMotivation;
 	}
 	
+	//제거할 범행도구 카드가 없는 경우('NO')메서드
 	String[] reasoningInputTool(int hintcount) {
 		String[] userAnswerTool = null;
 		DyingMessage.toolflag = true;
@@ -100,6 +110,7 @@ public class User {
 		return userAnswerTool;
 	}
 	
+	//제거할 카드 모두 입력 후 행위 제어 메서드
 	void reasoningInput(int hintcount) {//힌트를 본 후 관련없는 카드를 제거하기 위한 메서드
 		DyingMessage.userAnswerCount = 0;
 		
@@ -130,6 +141,7 @@ public class User {
 		}
 	}
 	
+	//제거 카드 선택 후 삭제 요청메서드
 	void reasoningProcess(String[] userAnswerCriminal, String[] userAnswerMotivation, String[] userAnswerTool, boolean totalflag, int hintcount){//추리 시 try 관련 질문
 		System.out.println ("☞☞☜선택한 6장의 카드를 제거하겠습니까? (YES/NO)");
 		System.out.println ("  1) 입력한 범인 : " + Arrays.toString (userAnswerCriminal));
@@ -154,6 +166,7 @@ public class User {
 		}
 	}
 	
+	//제거할 범인 카드 입력
 	String[] inputCriminal() {//범인을 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		boolean flag = false;//사용자 입력에 널이 있다고 가정
@@ -172,6 +185,7 @@ public class User {
 		return userAnswerCriminal;
 	}
 	
+	//제거할 범행동기 카드 입력
 	String[] inputMotivation() {//살해동기를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		boolean flag = false;
@@ -188,6 +202,7 @@ public class User {
 		return userAnswerMotivation;
 	}
 	
+	//제거할 범행도구 카드 입력
 	String[] inputTool() {//살해도구를 입력하여 쪼개는 메서드
 		Scanner sc = new Scanner(System.in);
 		boolean flag = false;
@@ -204,6 +219,7 @@ public class User {
 		return userAnswerTool;
 	}
 	
+	//카드를 입력하지 않은 경우 체크
 	boolean inputNullCheck(String[] checkUserInput) {//사용자 입력값 null체크
 		boolean flag = true;//사용자 입력에 널이 없음.
 		for(int i = 0 ; i < checkUserInput.length ; i++) {
@@ -215,6 +231,7 @@ public class User {
 		return flag;
 	}
 	
+	//사용자가 입력한 카드의 결과가 추리 성공했는지 판별하는 메서드
 	//사용자가 입력한 값이 제시된 카드 목록에 유효한지 검사하는 메서드
 	boolean reasoningInputChecker(String[] userInput,String type){
 			boolean[] flag = new boolean[userInput.length];
@@ -271,6 +288,7 @@ public class User {
 			return result;
 		}
 	
+	//정답 맞추기 메서드
 	void userSuccess() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println ("정답을 입력하세요. [정답입력형식] : '범인,범행동기,범행도구'");
@@ -287,11 +305,13 @@ public class User {
 		}
 	}
 	
+	//게임 종료 메서드
 	void userDistory() {
 		System.out.println ("게임을 종료합니다.");
 		System.exit (0);
 	}
 	
+	//정답 보기 메서드
 	void userAnswer() {
 		System.out.println ("정답은 : [범인 : " + Card.round_answer[0] + " ], [범행동기 : " + Card.round_answer[1] + " ], [범행도구 : " + Card.round_answer[2] + "] 입니다.");
 		userDistory();

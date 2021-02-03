@@ -18,7 +18,7 @@ public class DyingMessage{
 	static boolean motivationflag = true;
 	static boolean toolflag = true;
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) {//메인메서드 카드 목록과 메뉴 세팅
 		
 		System.out.println("다잉메세지. 소설가가 남긴 마지막 메세지");
 
@@ -38,7 +38,7 @@ public class DyingMessage{
 		}
 	}
 	
-	void showCardList() {//첫 시작 시 깔린 카드의 현황을 보여주는 메서드
+	void showCardList() {//첫 시작 시 깔린 카드의 현황을 보여주는 메서드,//카드 목록을 보이게 하는 함수
 		Card cd = new Card();
 		
 		System.out.println("소설가의 마지막 문장을 보고 '범인', '살해동기', '살해도구'를 맞춰주세요");
@@ -62,7 +62,7 @@ public class DyingMessage{
 	}
 	
 	
-	static String userMenu() {//제공된 힌트수에 따라 힌트 제한
+	static String userMenu() {//제공된 힌트수에 따라 힌트 제한,//힌트별 메뉴 세팅
 		String userSetMenu;
 		if(hintcount==1 || hintcount==2 || hintcount==3|| hintcount==4 ) {//힌트를 3회까지 얻을 수 있음.
 			userSetMenu = "☞☞☞당신은 힌트를 얻겠습니까? 정답을 맞추시겠습니까? (힌트얻기 / 정답맞추기 / 정답보기 / 게임종료)";
@@ -75,7 +75,7 @@ public class DyingMessage{
 	}
 	
 	
-	void userMenuSettings() {//메뉴 목록을 세팅해주는 메서드
+	void userMenuSettings() {//메뉴 목록을 세팅해주는 메서드,//사용자 선택 메뉴에 따른 작업 호출
 		Scanner sc = new Scanner(System.in);
 		DyingMessage dm = new DyingMessage();
 		Hint hints = new Hint();
