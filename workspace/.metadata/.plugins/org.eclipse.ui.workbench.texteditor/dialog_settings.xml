@@ -13,23 +13,16 @@
 		<item key="isRegEx" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wholeword" value="false"/>
-		<item key="selection" value="Card.round_answer[0]"/>
+		<item key="selection" value="println"/>
 		<list key="findhistory">
+			<item value="println"/>
+			<item value="hintcount"/>
+			<item value="criminal"/>
+			<item value="reasoningInputChecker"/>
 			<item value="Card.round_answer[0]"/>
 			<item value="criminalHint"/>
 			<item value="■ toolflag"/>
 			<item value="제거하겠습니까"/>
-			<item value="■ motivationflag"/>
-			<item value="[제거]"/>
-			<item value="직업이 있습니까"/>
-			<item value="당신은 힌트를 얻겠습니까"/>
-			<item value="■ userAnswerCriminal"/>
-			<item value="■ criminalflag"/>
-			<item value="메서드 종료"/>
-			<item value="motivationCountNum"/>
-			<item value="criminalVerification"/>
-			<item value="hintcount"/>
-			<item value="reasoningProcess"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student2"/>
@@ -45,6 +38,6 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item key="DIALOG_Y_ORIGIN" value="403"/>
-		<item key="DIALOG_X_ORIGIN" value="729"/>
+		<item key="DIALOG_X_ORIGIN" value="691"/>
 	</section>
 </section>

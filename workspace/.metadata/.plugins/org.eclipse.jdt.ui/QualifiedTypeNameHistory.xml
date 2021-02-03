@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-    <fullyQualifiedTypeName name="org.omg.CORBA.PRIVATE_MEMBER"/>
-    <fullyQualifiedTypeName name="sun.security.provider.JavaKeyStore.CaseExactJKS"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="vo.PSizeVO"/>
     <fullyQualifiedTypeName name="common.RegEx"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="vo.QnAVO"/>
     <fullyQualifiedTypeName name="sun.org.mozilla.javascript.internal.regexp.SubString"/>
     <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.pipe.NextAction"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="g_oop2.Customer"/>
     <fullyQualifiedTypeName name="g_oop2.AccessModifier"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="javax.activation.DataSource"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

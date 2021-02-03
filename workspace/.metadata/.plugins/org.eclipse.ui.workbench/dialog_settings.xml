@@ -12,6 +12,10 @@
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item key="dialogHeight" value="737"/>
 		<item key="dialogWidth" value="1260"/>
+		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_WIDTH" value="450"/>
+		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_HEIGHT" value="506"/>
+		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_SIZE" value="true"/>
+		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="textEntries">
 		</list>
 		<list key="orderedElements">
@@ -59,6 +63,20 @@
 			<item value="C:\Users\PC21\Desktop\Daeskintue.zip"/>
 			<item value="C:\Users\PC21\Desktop\Daeskinmon.zip"/>
 			<item value="C:\Users\PC21\Desktop\Daeskin222.zip"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.internal.dialogs.WorkbenchEditorsDialog">
+		<item key="allPersp" value="false"/>
+		<item key="sort" value="0"/>
+		<list key="bounds">
+			<item value="806"/>
+			<item value="102"/>
+			<item value="798"/>
+			<item value="553"/>
+		</list>
+		<list key="columns">
+			<item value="252"/>
+			<item value="504"/>
 		</list>
 	</section>
 </section>
