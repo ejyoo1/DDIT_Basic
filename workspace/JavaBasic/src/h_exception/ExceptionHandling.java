@@ -1,5 +1,8 @@
 package h_exception;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class ExceptionHandling {
 	public static void main (String[] args) {
 		/*
@@ -32,7 +35,51 @@ public class ExceptionHandling {
 			int result = 10 / 0;
 			System.out.println (result);
 		} catch (ArithmeticException e) {
-			System.out.println ("■에러■ \n 0으로 나눴다.");
+			e.printStackTrace ();
+		} catch (NullPointerException | IndexOutOfBoundsException e) {
+			//IndexOutOfBoundsException
+			int[] arr = new int[10];
+			System.out.println (arr[10]);
+			
+			//NullPointException
+			String str= null;
+			System.out.println (str.equals (""));
+		} catch(Exception e) {
+			//모든 예외처리 클래스의 부모 클래스
+		}
+		
+		try {
+			//java.lang에 있는 패키지는 import가 필요없다.
+			Thread.sleep (1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace ();
+			e.getMessage ();
+			
+		}
+		
+		/*
+		 * CallStack : 이 구조로 보통 오류메시지 출력됨.
+		 * |		|
+		 * |		|
+		 * |test2()	|
+		 * |test1()	|
+		 * |main()	|
+		 * */
+		
+		test1();
+	}
+
+	private static void test1 () {
+		test2();
+	}
+
+	private static void test2 () {
+		// System.out.println (10/0);
+		
+		try {
+			new FileInputStream ("");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }
