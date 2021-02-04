@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="java.awt.List"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="vo.PSizeVO"/>
-    <fullyQualifiedTypeName name="common.RegEx"/>
-    <fullyQualifiedTypeName name="vo.QnAVO"/>
     <fullyQualifiedTypeName name="sun.org.mozilla.javascript.internal.regexp.SubString"/>
     <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.pipe.NextAction"/>
     <fullyQualifiedTypeName name="sun.font.CreatedFontTracker"/>
@@ -25,7 +19,6 @@
     <fullyQualifiedTypeName name="vo.OrderVO"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="com.sun.java.util.jar.pack.Package.File"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
@@ -60,4 +53,11 @@
     <fullyQualifiedTypeName name="javax.activation.DataSource"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.DataOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.DataInputStream"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>
