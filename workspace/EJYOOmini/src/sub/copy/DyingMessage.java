@@ -7,7 +7,6 @@ public class DyingMessage{
 	static String criminalHint = "";
 	static String motivationHint = "";
 	static String toolHint = "";
-	static int criminalCountNum = 1;
 	static int motivationCountNum = 1;
 	static int toolCountNum = 1;
 	static int userAnswerCount = 0;
@@ -92,7 +91,7 @@ public class DyingMessage{
 				users.userAnswer ();
 				break;
 			case "힌트모두보기" :
-				Hint.cardCount(criminalCountNum,motivationCountNum,toolCountNum);
+				Hint.cardCount(nl.getHintcount (),motivationCountNum,toolCountNum);
 				userMenuSettings();
 				break;
 			default : 
