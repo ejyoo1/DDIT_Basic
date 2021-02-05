@@ -32,12 +32,11 @@ public class SetComma {
 //		}
 		Scanner sc = new Scanner(System.in);
 		String userValue = sc.nextLine();
-	    String resultValue = "";
 	    for(int i = userValue.length () - 1 ; 0 <= i ; i--) {
 	    	if(i > 0 && (i%3) == 0) {
-	    		System.out.print (userValue.charAt (userValue.length() - i - 1) + "," + resultValue);
+	    		System.out.print (userValue.charAt (userValue.length() - i - 1) + ",");
 	    	}else {
-	    		System.out.print (userValue.charAt (userValue.length() - i - 1) + resultValue);
+	    		System.out.print (userValue.charAt (userValue.length() - i - 1) );
 	    	}
 	    		
 	    }
