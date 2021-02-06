@@ -1,4 +1,4 @@
-package sub.copy;
+package CodeRepectory;
 
 public class Menu {
 

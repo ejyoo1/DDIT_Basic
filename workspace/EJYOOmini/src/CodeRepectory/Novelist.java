@@ -1,4 +1,4 @@
-package sub.copy;
+package CodeRepectory;
 
 public class Novelist {
 	private int hintcount = 1;

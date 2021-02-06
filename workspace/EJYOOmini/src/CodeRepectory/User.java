@@ -1,4 +1,4 @@
-package sub.copy;
+package CodeRepectory;
 
 import java.util.Arrays;
 import java.util.Scanner;

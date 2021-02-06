@@ -1,4 +1,4 @@
-package sub.copy;
+package CodeRepectory;
 
 public class Card {
 	static String[] round_answer = {"복서", "협박", "화분"};
