@@ -6,8 +6,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<f:view>
-
-</f:view>
+	<fieldset>
+		<form action="loginProc.jsp">
+			<input type="text" name="uid">
+			<input type="password" name="upw">
+			<input type="submit" value="로그인">
+		</form>
+	</fieldset>
 </body>
 </html>

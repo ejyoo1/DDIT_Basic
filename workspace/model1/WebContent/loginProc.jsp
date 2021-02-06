@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="java.sql.*"
+	import="model1.*"
 %>
 <!-- 로그인 정보를 가지고 빈에 담고, 디비에 연결하여 회원인지 체크하는 쿼리를 수행한다. -->
 <%! 
@@ -35,10 +36,32 @@
 
 <%
 	//아이디 비번 이용하여 쿼리 수행
-	String uid = "guest";
-	String upw = "1234";
-	String sql = "select * from tbl_user where userid='"+uid+"' and userpw='"+upw+"';";
+	String uid = request.getParameter("uid");
+	String upw = request.getParameter("upw");
+	String sql = "select * from tbl_user where userid='" + uid + "' and userpw='" + upw + "'";
 	//쿼리 수행 코드
-	conn.createStatement ();
-
+	Statement stmt  = conn.createStatement ();
+	ResultSet rs	= stmt.executeQuery (sql);
+	//쿼리 결과로 다음 데이터가 있으면 수행해라.
+	User userBean = null;
+	if(rs.next()){
+		userBean = new User();
+		userBean.setIdx (rs.getInt("IDX"));
+		userBean.setUid (rs.getString ("USERID"));
+		userBean.setUpw (rs.getString ("USERPW"));
+		userBean.setRegdate (rs.getString ("REGDATE"));
+	}
+	
+	rs.close();
+	stmt.close();
+	
+	if( userBean == null ){
+		RequestDispatcher rd =	request.getRequestDispatcher("loginError.jsp");
+		rd.forward(request,response);
+	}else{
+	//페이지 이동
+		request.setAttribute("user", userBean);
+		RequestDispatcher rd =	request.getRequestDispatcher("bbs.jsp");
+		rd.forward(request,response);
+	}
 %>
