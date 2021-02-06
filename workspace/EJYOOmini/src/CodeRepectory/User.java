@@ -71,7 +71,7 @@ public class User {
 		DyingMessage.criminalflag = true;
 		userAnswerCriminal = inputCriminal();
 		
-		if(!userAnswerCriminal[0].equals ("NO")) {
+		if(!userAnswerCriminal[0].equalsIgnoreCase ("NO")) {
 			DyingMessage.criminalflag = criminalVerification(userAnswerCriminal);
 			DyingMessage.userAnswerCount += userAnswerCriminal.length;
 		}else {
@@ -86,7 +86,7 @@ public class User {
 		DyingMessage.motivationflag = true;
 		userAnswerMotivation = inputMotivation();
 		
-		if(!userAnswerMotivation[0].equals ("NO")) {
+		if(!userAnswerMotivation[0].equalsIgnoreCase ("NO")) {
 			DyingMessage.motivationflag = motivationVerification(userAnswerMotivation);
 			DyingMessage.userAnswerCount += userAnswerMotivation.length;
 		}else {
@@ -101,7 +101,7 @@ public class User {
 		DyingMessage.toolflag = true;
 		userAnswerTool = inputTool();
 		
-		if(!userAnswerTool[0].equals ("NO")) {
+		if(!userAnswerTool[0].equalsIgnoreCase ("NO")) {
 			DyingMessage.toolflag = toolVerification(userAnswerTool);
 			DyingMessage.userAnswerCount += userAnswerTool.length;
 		}else {
@@ -149,7 +149,7 @@ public class User {
 		System.out.println ("  3) 입력한 살해도구 : " + Arrays.toString (userAnswerTool));
 		Scanner sc = new Scanner(System.in);
 		String userInput = sc.nextLine ();
-		if(userInput.equals ("YES")) {
+		if(userInput.equalsIgnoreCase ("YES")) {
 			Card cd = new Card();
 			if(totalflag) {//추리 성공인 경우
 				cd.cardDel (userAnswerCriminal, userAnswerMotivation, userAnswerTool);
@@ -157,11 +157,11 @@ public class User {
 				System.out.println ("추리 실패하였습니다. 목숨 토큰이 차감됩니다.");
 				reasoningInput(hintcount);
 			}
-		}else if(userInput.equals ("NO")) {
+		}else if(userInput.equalsIgnoreCase("NO")) {
 			System.out.println ("제거할 6장의 카드를 다시 입력해주세요.");
 			reasoningInput(hintcount);
 		}else {
-			System.out.println ("잘못입력하였습니다. 대소문자 구별하며 공백없이 입력해주세요.");
+			System.out.println ("잘못입력하였습니다. 다시 입력하여 주세요.");
 			reasoningProcess(userAnswerCriminal,userAnswerMotivation,userAnswerTool,totalflag,hintcount);
 		}
 	}
@@ -175,7 +175,7 @@ public class User {
 		while(!flag) {
 			System.out.println ("☞☞☞[제거] 범인이 아닐 것 같은 직업이 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerCriminal = sc.nextLine ().split (",");
-			if(userAnswerCriminal[0].equals ("NO")) {
+			if(userAnswerCriminal[0].equalsIgnoreCase ("NO")) {
 				break;
 			}else {
 			//공백 검사
@@ -193,7 +193,7 @@ public class User {
 		while(!flag) {
 			System.out.println ("☞☞☞[제거] 적합하지 않는 살해 동기가 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerMotivation = sc.nextLine ().split (",");
-			if(userAnswerMotivation[0].equals ("NO")) {
+			if(userAnswerMotivation[0].equalsIgnoreCase ("NO")) {
 				break;
 			}
 			//공백 검사
@@ -210,7 +210,7 @@ public class User {
 		while(!flag) {
 			System.out.println ("☞☞☞[제거] 적합하지 않는 살해 도구가 있습니까? 있다면 입력하세요. 없으면 'NO'를 입력");
 			userAnswerTool = sc.nextLine ().split (",");
-			if(userAnswerTool[0].equals ("NO")) {
+			if(userAnswerTool[0].equalsIgnoreCase ("NO")) {
 				break;
 			}
 			//공백 검사
