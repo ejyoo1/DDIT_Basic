@@ -7,7 +7,7 @@
 </head>
 <body>
 	<fieldset>
-		<form action="loginProc.jsp">
+		<form action="/model2/loginProc">
 			<input type="text" name="uid">
 			<input type="password" name="upw">
 			<input type="submit" value="로그인">
