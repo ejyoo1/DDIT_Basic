@@ -30,6 +30,7 @@ public class SetComma {
 //			char charAt = rev.charAt (i);
 //			System.out.print (charAt);
 //		}
+		/*
 		Scanner sc = new Scanner(System.in);
 		String userValue = sc.nextLine();
 	    for(int i = userValue.length () - 1 ; 0 <= i ; i--) {
@@ -40,6 +41,20 @@ public class SetComma {
 	    	}
 	    		
 	    }
+	    */
+		
+		Scanner sc = new Scanner(System.in);
+		String number = sc.nextLine();
+		String number2 = "";
+		int count = 0;
+		for(int i = number.length() - 1 ; i >= 0 ; i--) {
+			number2 = number.charAt (i) + number2;
+			count++;
+			if(count % 3 == 0 && count != number.length ()) {
+				number2 = "," + number2;
+			}
+			System.out.println (number2);
+		}
 	    
 	}
 
