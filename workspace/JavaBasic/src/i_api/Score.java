@@ -65,17 +65,17 @@ public class Score {
 			scores.set(min, temp);
 			
 //			합계정렬
-			int temp2 = sums.get (i);
+			Integer temp2 = sums.get (i);
 			sums.set(i, sums.get(min));
 			sums.set(min, temp2);
 			
 //			평균정렬
-			double temp3 = avgs.get(i);			
+			Double temp3 = avgs.get(i);			
 			avgs.set(i, avgs.get(min));
 			avgs.set(min, temp3);
 
 //			석차정렬
-			int temp4 = ranks.get(i);		
+			Integer temp4 = ranks.get(i);		
 			ranks.set(i, ranks.get(min));
 			ranks.set(min, temp4);
 			
