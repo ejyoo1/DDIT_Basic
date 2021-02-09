@@ -13,16 +13,16 @@ public class Score {
 			subjects.add (subjectList[i]);
 		}
 //		이름삽입
-		ArrayList<String> names = new ArrayList<>();
+		ArrayList<String> students = new ArrayList<>();
 		for(int i = 0 ; i < nameList.length ; i++) {
-			names.add (nameList[i]);
+			students.add (nameList[i]);
 		}
 		
 //		점수삽입
 		ArrayList<ArrayList<Integer>> scores = new ArrayList<>();
 //		합계 삽입
 		ArrayList<Integer> sums = new ArrayList<>();
-		for(int i = 0 ; i < names.size () ; i++) {
+		for(int i = 0 ; i < students.size () ; i++) {
 //			합계변수
 			int sum = 0;
 			ArrayList<Integer> score = new ArrayList<>();
@@ -81,9 +81,9 @@ public class Score {
 			rank.set(i, rank.get(min));
 			rank.set(min, temp4);
 			
-			String temp5 = names.get(i);		
-			names.set(i, names.get(min));
-			names.set(min, temp5);
+			String temp5 = students.get(i);		
+			students.set(i, students.get(min));
+			students.set(min, temp5);
 		}
 		
 //		과목합계, 과목평균
@@ -110,7 +110,7 @@ public class Score {
 		
 //		점수출력
 		for(int i = 0; i < scores.size(); i++){
-			System.out.print(names.get(i) + "\t");
+			System.out.print(students.get(i) + "\t");
 			for(int j = 0; j < subjects.size(); j++){
 				System.out.print(scores.get (i).get (j) + "\t");
 			}
