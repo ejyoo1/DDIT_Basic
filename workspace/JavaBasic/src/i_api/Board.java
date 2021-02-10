@@ -47,7 +47,7 @@ public class Board {
 	static void introMenu() {
 		while(true) {
 			resultPrint(arrList);
-			System.out.println ("1. 조회\t\t2.등록\t\t3.종료");
+			System.out.println ("1.전체조회\t\t2.등록\t\t3.종료\t\t4.개별조회");
 			System.out.println ("원하는 메뉴 입력 >> ");
 			String userMenu = sc.nextLine ();
 			if(userMenu.equals ("1")) {
@@ -64,10 +64,17 @@ public class Board {
 			}else if(userMenu.equals("3")) {
 				System.out.println ("종료합니다.");
 				System.exit (0);
+			}else if(userMenu.equals ("4")){
+				if(!arrList.isEmpty ()) {
+					viewChoice();
+					updateMenu();
+				}else {
+					System.out.println ("등록된 게시글이 없습니다.");
+				}
+				
 			}else {
 				System.out.println ("재입력");
 			}
-			System.arraycopy (userMenu, number, userMenu, number, number);
 		}
 	}
 	//수정메뉴
@@ -87,6 +94,27 @@ public class Board {
 			}
 		}
 	}
+//	개별 조회 메서드
+	static void viewChoice(){
+		resultPrint(arrList);
+		System.out.print ("조회할 게시글 번호 입력 >>");
+		int input = Integer.parseInt (sc.nextLine());
+		choicePrint(input);
+	};
+//	개별조회 출력 메서드
+	static void choicePrint(int input) {
+//		출력
+		System.out.println ("-------------------------게시판-------------------------");
+		System.out.println ("제목\t\t내용\t\t작성일");
+		System.out.println ("------------------------------------------------------");
+		
+//		arrList에 저장된 HashMap 추출
+		HashMap<String,Object> al = arrList.get (input-1);
+		System.out.println (al.get ("title") + "\t\t" + al.get ("contents") + "\t\t" + al.get ("create"));
+
+		System.out.println ("------------------------------------------------------");
+	}
+
 //	삭제 게시글 선택 메서드
 	static void deleteChoice(){
 		resultPrint(arrList);
