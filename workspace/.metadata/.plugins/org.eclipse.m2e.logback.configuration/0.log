@@ -4365,3 +4365,24 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.oracle:oj
 2021-02-09 15:32:56,987 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2021-02-09 15:32:56,988 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\model2\src\test\resources
 2021-02-10 08:48:39,505 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-02-10 13:33:22,554 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-02-10 13:33:45,188 [Worker-10: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:45,189 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\DBTest\src\main\resources
+2021-02-10 13:33:45,190 [Worker-10: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:45,190 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\DBTest\src\test\resources
+2021-02-10 13:33:48,092 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:48,092 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\DBTest2\src\main\resources
+2021-02-10 13:33:48,093 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:48,093 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\DBTest2\src\test\resources
+2021-02-10 13:33:48,828 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:48,828 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\JstlPro\src\main\resources
+2021-02-10 13:33:48,829 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:48,829 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\JstlPro\src\test\resources
+2021-02-10 13:33:49,039 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:49,039 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\model1\src\main\resources
+2021-02-10 13:33:49,040 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:49,041 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\model1\src\test\resources
+2021-02-10 13:33:49,154 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:49,154 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\model2\src\main\resources
+2021-02-10 13:33:49,155 [Worker-6: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-02-10 13:33:49,155 [Worker-6: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\@YOOEUNJI\ejyoo1Project\workspace\model2\src\test\resources

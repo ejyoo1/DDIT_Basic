@@ -1,5 +1,6 @@
 package e_oop;
 
+
 import java.util.Scanner;
 
 public class ScanUtil {

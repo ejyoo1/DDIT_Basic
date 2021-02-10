@@ -1,7 +1,5 @@
 package f_game;
 
-import java.util.Arrays;
-
 import e_oop.ScanUtil;
 
 public class MyGame {
