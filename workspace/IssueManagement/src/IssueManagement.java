@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface IssueManagement {
+//	DB 연결하는 메서드
+	public abstract ArrayList<HashMap<String,Object>> dbconntect(String url, String uid, String upw);
 //	로그인
 	public abstract void login();
 //	이슈 전체 목록 조회
-	public abstract void issueReadAll();
+	public abstract int issueReadAll();
 //	이슈 생성
 	public abstract void issueCreate();
 //	이슈 개별 조회(이슈 상세)
@@ -33,5 +37,5 @@ public interface IssueManagement {
 	public abstract void userMenu();
 //	메시지 알림(Success, Error, Warning)
 //	Success : 작업 성공, Error : 작업실패, Warning : 경고(삭제시 사용)
-	public abstract void message();
+	public abstract String message(String code);
 }
