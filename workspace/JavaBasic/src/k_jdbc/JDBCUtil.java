@@ -219,5 +219,49 @@ public class JDBCUtil {
 		return list;
 	}
 	
-
+	int update(String sql) {
+//		리턴 타입 변수 생성
+		int result = 0;
+		try {
+//			DB 연결
+			con = DriverManager.getConnection(url,id,pw);
+			
+//			쿼리 실행
+			ps = con.prepareStatement (sql);
+			
+//			쿼리 결과 삽입
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}//close finally
+		return result;
+	}
+	
+	int update(String sql, List<Object> param) {
+		int result = 0;
+		try {
+//			db 연결
+			con = DriverManager.getConnection (url,id,pw);
+//			쿼리 실행
+			ps = con.prepareStatement (sql);
+//			메서드 사용하여 값을 sql에 넘겨주어야 함.
+//			list : 여러개 순서대로 이므로 for 문을 돌려서 넘겨줌
+			for(int i = 0 ; i < param.size () ; i++) {
+//				물음표 모두 세팅 완료. (list된 타입이 어떤 타입인지 모르고 제네릭이 <Object> 이므로 Object로 받은것임.
+				ps.setObject ( i + 1 , param.get (i) );//물음표는 1부터 시작하므로 +1을 함.
+			}
+			
+			result = ps.executeUpdate ();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
