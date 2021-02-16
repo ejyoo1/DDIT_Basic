@@ -44,8 +44,10 @@ public class JDBC {
 //			1) select 
 			rs = ps.executeQuery ();
 			
-//			2) insert, update, delete : int type의 리턴타입을 가지고 잇음.
+//			2) insert, update, delete : int type의 리턴타입을 가지고 잇음.(커밋이 자동으로 됨)
 //			int result = ps.executeUpdate ();//몇개의 row가 영향을 받앗는지 반환해준다.
+//			System.out.println(result + "개 행이 삽입되었습니다.");
+			
 			
 //			select 의 결과를 얻어온 rs에서 데이터 꺼내기 
 //			처음 rs 무언가를 가지고 잇지 않는다.rs.next()를 실행하면 db의 첫번째 줄을 바라보게 된다.
