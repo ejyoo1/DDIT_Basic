@@ -38,152 +38,6 @@ public class JDBCBoard extends JDBCConnection{
 		}
 
 	}
-	private static void delete(HashMap<String, Object> board){	
-		try {
-//			db 연결
-			con = DriverManager.getConnection (url,id,pw);
-//			쿼리작성
-			String sql = "DELETE FROM TB_JDBC_BOARD WHERE BOARD_NO = '"+ board.get ("board_no") +"'";
-//			쿼리실행
-			ps = con.prepareStatement (sql);
-//			쿼리결과 삽입
-			int result = ps.executeUpdate ();
-			System.out.println (result + "개 행이 삭제되었습니다.");
-			selectInsertAll();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-//			객체 반환
-//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
-			if( ps != null ) try { ps.close (); } catch(Exception e) {}
-			if( con != null ) try { con.close (); } catch(Exception e) {}
-		}
-	}
-	
-	private static void insert() {
-		System.out.print ("제목>");
-		String title = ScanUtil.nextLine ();
-		System.out.print ("내용>");
-		String content = ScanUtil.nextLine ();
-		System.out.print ("작성자>");
-		String user_id = ScanUtil.nextLine ();
-		
-		try {
-//			db연결
-			con = DriverManager.getConnection (url,id,pw);
-//			쿼리 작성
-			String sql = "INSERT INTO TB_JDBC_BOARD(BOARD_NO,TITLE,CONTENT,USER_ID,REG_DATE)\r\n"
-					+ "VALUES(BOARD_NO_SEQ.NEXTVAL,"
-					+ "'"+ title +"',"
-					+ "'"+ content +"',"
-					+ "'"+ user_id +"',"
-					+ "sysdate)";
-//			쿼리 실행
-			ps = con.prepareStatement(sql);
-//			쿼리결과 삽입
-			int result = ps.executeUpdate ();
-			System.out.println (result + "개 행이 삽입되었습니다.");
-			selectInsertAll();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-//			객체 반환
-//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
-			if( ps != null ) try { ps.close (); } catch(Exception e) {}
-			if( con != null ) try { con.close (); } catch(Exception e) {}
-		}
-	}
-	
-	private static void read() {
-		HashMap<String, Object> board = new HashMap<>();	
-		System.out.println ("게시글 번호 입력>");
-		int boardNo = ScanUtil.nextInt ();
-//		데이터 접근
-		for(int i = 0 ; i < boardList.size() ; i++) {
-//			입력한 값이 보드내 저장된 해쉬 키와 동일한 경우
-			if((Integer)boardList.get (i).get("board_no") == boardNo) {
-				board = boardList.get (i);
-				break;
-			}//end if
-		}//end for
-		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-		System.out.println ("번호\t: " + board.get ("board_no"));
-		System.out.println ("제목\t: " + board.get ("title"));
-		System.out.println ("내용\t: " + board.get ("content"));
-		System.out.println ("작성자\t: " + board.get ("user_id"));
-		System.out.println ("작성일\t: " + board.get ("reg_date"));
-		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-		System.out.println ("---------------------------------------------");
-		System.out.println ("1.수정\t2.삭제\t0.목록");
-		System.out.println ("입력>");
-		int input = ScanUtil.nextInt ();
-		
-		switch(input) {
-			case 1:
-				update(board);
-				break;
-			case 2:
-				delete(board);
-				break;
-			case 0:
-				System.out.println ("목록으로");
-				break;
-		}//end switch
-	}//end read method
-	
-	private static void readAll(){
-		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-//		ArrayList 출력
-		for(int i = boardList.size() - 1 ; i >= 0 ; i--) {
-			
-			HashMap<String, Object> board = new HashMap<>();	
-			board = boardList.get (i);
-			System.out.println (board.get ("board_no")
-					+ "\t\t" + board.get ("title")
-					+ "\t\t" + board.get ("content")
-					+ "\t\t" + board.get ("user_id")
-					+ "\t\t" + board.get ("reg_date")
-					);
-		}
-		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-	}
-	
-	private static void update(HashMap<String, Object> board) {
-		System.out.println ("제목>");
-		String title = ScanUtil.nextLine ();
-		System.out.println ("내용>");
-		String content = ScanUtil.nextLine ();
-		
-		board.put ("title", title);
-		board.put ("content", content);
-		
-		try {
-//			DB연결
-			con = DriverManager.getConnection (url,id,pw);
-			Object board_no = board.get ("board_no");
-//			쿼리작성
-			String sql = "UPDATE TB_JDBC_BOARD "
-							+ "SET TITLE = '"+ board.get ("title") +"',"
-							+ "CONTENT = '"+ board.get ("content") +"' "
-							+ "WHERE BOARD_NO = "+board.get ("board_no");
-//			쿼리실행
-			ps = con.prepareStatement (sql);
-//			쿼리결과 삽입
-			int result = ps.executeUpdate ();
-			System.out.println (result + "개 행이 수정되었습니다.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-//			객체 반환
-//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
-			if( ps != null ) try { ps.close (); } catch(Exception e) {}
-			if( con != null ) try { con.close (); } catch(Exception e) {}
-		}//close finally
-		
-		
-		System.out.println ("수정 완료되었습니다.");
-	}//end update
-	
 	private static void selectInsertAll() {
 		boardList = new ArrayList<>();
 		try {
@@ -196,7 +50,7 @@ public class JDBCBoard extends JDBCConnection{
 					+ "content 내용, "
 					+ "user_id 이름, "
 					+ "reg_date 생성시간 "
-					+ "FROM TB_JDBC_BOARD ";
+					+ "FROM TB_JDBC_BOARD ORDER BY BOARD_NO ";
 			
 //			쿼리실행
 			ps = con.prepareStatement (sql);
@@ -242,4 +96,157 @@ public class JDBCBoard extends JDBCConnection{
 			if( con != null ) try { con.close (); } catch(Exception e) {}
 		}//end finally
 	}//end readAll
+	
+	private static void readAll(){
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+//		ArrayList 출력
+		for(int i = boardList.size() - 1 ; i >= 0 ; i--) {
+			
+			HashMap<String, Object> board = new HashMap<>();	
+			board = boardList.get (i);
+			System.out.println (board.get ("board_no")
+					+ "\t\t" + board.get ("title")
+					+ "\t\t" + board.get ("content")
+					+ "\t\t" + board.get ("user_id")
+					+ "\t\t" + board.get ("reg_date")
+					);
+		}
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+	}
+	
+	private static void read() {
+		HashMap<String, Object> board = new HashMap<>();	
+		System.out.println ("게시글 번호 입력>");
+		int boardNo = ScanUtil.nextInt ();
+//		데이터 접근
+		for(int i = 0 ; i < boardList.size() ; i++) {
+//			입력한 값이 보드내 저장된 해쉬 키와 동일한 경우
+			if((Integer)boardList.get (i).get("board_no") == boardNo) {
+				board = boardList.get (i);
+				break;
+			}//end if
+		}//end for
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println ("번호\t: " + board.get ("board_no"));
+		System.out.println ("제목\t: " + board.get ("title"));
+		System.out.println ("내용\t: " + board.get ("content"));
+		System.out.println ("작성자\t: " + board.get ("user_id"));
+		System.out.println ("작성일\t: " + board.get ("reg_date"));
+		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println ("---------------------------------------------");
+		System.out.println ("1.수정\t2.삭제\t0.목록");
+		System.out.println ("입력>");
+		int input = ScanUtil.nextInt ();
+		
+		switch(input) {
+			case 1:
+				update(board);
+				break;
+			case 2:
+				delete(board);
+				break;
+			case 0:
+				System.out.println ("목록으로");
+				break;
+		}//end switch
+	}//end read method
+	
+	private static void insert() {
+		System.out.print ("제목>");
+		String title = ScanUtil.nextLine ();
+		System.out.print ("내용>");
+		String content = ScanUtil.nextLine ();
+		System.out.print ("작성자>");
+		String user_id = ScanUtil.nextLine ();
+		
+		try {
+//			db연결
+			con = DriverManager.getConnection (url,id,pw);
+//			쿼리 작성
+			String sql = "INSERT INTO TB_JDBC_BOARD(BOARD_NO,TITLE,CONTENT,USER_ID,REG_DATE)\r\n"
+					+ "VALUES(BOARD_NO_SEQ.NEXTVAL,?,?,?,sysdate)";
+//			쿼리 실행
+			ps = con.prepareStatement(sql);
+			ps.setObject (1, title);
+			ps.setObject (2, content);
+			ps.setObject (3, user_id);
+//			쿼리결과 삽입
+			int result = ps.executeUpdate ();
+			if(0<result) {
+				System.out.println (result + "개 행이 삽입되었습니다.");
+			}else {
+				System.out.println ("등록이 실패하였습니다.");
+			}//close if-else
+			selectInsertAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}
+	}
+	
+	private static void update(HashMap<String, Object> board) {
+		System.out.println ("제목>");
+		String title = ScanUtil.nextLine ();
+		System.out.println ("내용>");
+		String content = ScanUtil.nextLine ();
+		
+		board.put ("title", title);
+		board.put ("content", content);
+		
+		try {
+//			DB연결
+			con = DriverManager.getConnection (url,id,pw);
+			Object board_no = board.get ("board_no");
+//			쿼리작성
+			String sql = "UPDATE TB_JDBC_BOARD "
+							+ " SET TITLE = ?,"
+							+ " CONTENT = ?"
+							+ " WHERE BOARD_NO = ? ";
+//			쿼리실행
+			ps = con.prepareStatement (sql);
+			ps.setObject (1, board.get ("title"));
+			ps.setObject (2, board.get ("content"));
+			ps.setObject (3, board.get ("board_no"));
+//			쿼리결과 삽입
+			int result = ps.executeUpdate ();
+			System.out.println (result + "개 행이 수정되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}//close finally
+		
+		
+		System.out.println ("수정 완료되었습니다.");
+	}//end update
+	
+	private static void delete(HashMap<String, Object> board){	
+		try {
+//			db 연결
+			con = DriverManager.getConnection (url,id,pw);
+//			쿼리작성
+			String sql = "DELETE FROM TB_JDBC_BOARD WHERE BOARD_NO = ? ";
+//			쿼리실행
+			ps = con.prepareStatement (sql);
+			ps.setObject (1, board.get ("board_no"));
+//			쿼리결과 삽입
+			int result = ps.executeUpdate ();
+			System.out.println (result + "개 행이 삭제되었습니다.");
+			selectInsertAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}
+	}
 }
