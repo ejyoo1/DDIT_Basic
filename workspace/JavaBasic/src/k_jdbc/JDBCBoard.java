@@ -38,6 +38,101 @@ public class JDBCBoard extends JDBCConnection{
 		}
 
 	}
+	
+	private static void selectInsertAll() {
+		boardList = new ArrayList<>();
+		try {
+			con = DriverManager.getConnection (url,id,pw);
+			
+			
+//			SELECT
+			String sql = " SELECT board_no 번호, "
+					+ "title 제목, "
+					+ "content 내용, "
+					+ "user_id 이름, "
+					+ "reg_date 생성시간 "
+					+ "FROM TB_JDBC_BOARD ";
+			
+//			쿼리실행
+			ps = con.prepareStatement (sql);
+//			쿼리결과 삽입
+			rs = ps.executeQuery();
+			
+//			쿼리 컬럼 객체 가져오기
+			ResultSetMetaData md = rs.getMetaData ();
+			
+//			컬럼 개수 조회
+			int columnCount = md.getColumnCount ();
+			
+			for(int i = 1 ; i <= columnCount ; i++) {//컬럼 수 만큼 찍기
+//				컬럼 이름 출력
+				System.out.print (md.getColumnName(i) + "\t\t");
+			}
+			System.out.println ();
+			
+//			컬럼 내용 ArrayList 저장
+			while(rs.next()) {
+				HashMap<String, Object> board = new HashMap<>();	
+				BoardDTO bdto = new BoardDTO();
+				bdto.setBoard_no (rs.getInt("번호"));//board_no
+				bdto.setTitle (rs.getString("제목"));//title
+				bdto.setContent (rs.getString("내용"));//content
+				bdto.setUser_id (rs.getString("이름"));//user_id
+				bdto.setReg_date (rs.getString("생성시간"));//reg_date
+					
+				board.put ("board_no", bdto.getBoard_no ());
+				board.put ("title", bdto.getTitle ());
+				board.put ("content", bdto.getContent ());
+				board.put ("user_id", bdto.getUser_id ());
+				board.put ("reg_date", bdto.getReg_date ());
+				
+				boardList.add (board);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println ("연결실패");
+		}finally {
+			if( rs != null ) try { rs.close(); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}//end finally
+	}//end readAll
+	
+	private static void insert() {
+		System.out.print ("제목>");
+		String title = ScanUtil.nextLine ();
+		System.out.print ("내용>");
+		String content = ScanUtil.nextLine ();
+		System.out.print ("작성자>");
+		String user_id = ScanUtil.nextLine ();
+		
+		try {
+//			db연결
+			con = DriverManager.getConnection (url,id,pw);
+//			쿼리 작성
+			String sql = "INSERT INTO TB_JDBC_BOARD(BOARD_NO,TITLE,CONTENT,USER_ID,REG_DATE)\r\n"
+					+ "VALUES(BOARD_NO_SEQ.NEXTVAL,"
+					+ "'"+ title +"',"
+					+ "'"+ content +"',"
+					+ "'"+ user_id +"',"
+					+ "sysdate)";
+			
+//			쿼리 실행
+			ps = con.prepareStatement(sql);
+//			쿼리결과 삽입
+			int result = ps.executeUpdate ();//몇개 행이 영향을 받았는지
+			System.out.println (result + "개 행이 삽입되었습니다.");
+			selectInsertAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}
+	}
+	
 	private static void delete(HashMap<String, Object> board){	
 		try {
 //			db 연결
@@ -59,41 +154,7 @@ public class JDBCBoard extends JDBCConnection{
 			if( con != null ) try { con.close (); } catch(Exception e) {}
 		}
 	}
-	
-	private static void insert() {
-		System.out.print ("제목>");
-		String title = ScanUtil.nextLine ();
-		System.out.print ("내용>");
-		String content = ScanUtil.nextLine ();
-		System.out.print ("작성자>");
-		String user_id = ScanUtil.nextLine ();
 		
-		try {
-//			db연결
-			con = DriverManager.getConnection (url,id,pw);
-//			쿼리 작성
-			String sql = "INSERT INTO TB_JDBC_BOARD(BOARD_NO,TITLE,CONTENT,USER_ID,REG_DATE)\r\n"
-					+ "VALUES(BOARD_NO_SEQ.NEXTVAL,"
-					+ "'"+ title +"',"
-					+ "'"+ content +"',"
-					+ "'"+ user_id +"',"
-					+ "sysdate)";
-//			쿼리 실행
-			ps = con.prepareStatement(sql);
-//			쿼리결과 삽입
-			int result = ps.executeUpdate ();
-			System.out.println (result + "개 행이 삽입되었습니다.");
-			selectInsertAll();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-//			객체 반환
-//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
-			if( ps != null ) try { ps.close (); } catch(Exception e) {}
-			if( con != null ) try { con.close (); } catch(Exception e) {}
-		}
-	}
-	
 	private static void read() {
 		HashMap<String, Object> board = new HashMap<>();	
 		System.out.println ("게시글 번호 입력>");
@@ -184,62 +245,5 @@ public class JDBCBoard extends JDBCConnection{
 		System.out.println ("수정 완료되었습니다.");
 	}//end update
 	
-	private static void selectInsertAll() {
-		boardList = new ArrayList<>();
-		try {
-			con = DriverManager.getConnection (url,id,pw);
-			
-			
-//			SELECT
-			String sql = " SELECT board_no 번호, "
-					+ "title 제목, "
-					+ "content 내용, "
-					+ "user_id 이름, "
-					+ "reg_date 생성시간 "
-					+ "FROM TB_JDBC_BOARD ";
-			
-//			쿼리실행
-			ps = con.prepareStatement (sql);
-//			쿼리결과 삽입
-			rs = ps.executeQuery();
-			
-//			쿼리 컬럼 객체 가져오기
-			ResultSetMetaData md = rs.getMetaData ();
-			
-//			컬럼 개수 조회
-			int columnCount = md.getColumnCount ();
-			
-			for(int i = 1 ; i <= columnCount ; i++) {//컬럼 수 만큼 찍기
-//				컬럼 이름 출력
-				System.out.print (md.getColumnName(i) + "\t\t");
-			}
-			System.out.println ();
-			
-//			컬럼 내용 ArrayList 저장
-			while(rs.next()) {
-				HashMap<String, Object> board = new HashMap<>();	
-				BoardDTO bdto = new BoardDTO();
-				bdto.setBoard_no (rs.getInt("번호"));//board_no
-				bdto.setTitle (rs.getString("제목"));//title
-				bdto.setContent (rs.getString("내용"));//content
-				bdto.setUser_id (rs.getString("이름"));//user_id
-				bdto.setReg_date (rs.getString("생성시간"));//reg_date
-					
-				board.put ("board_no", bdto.getBoard_no ());
-				board.put ("title", bdto.getTitle ());
-				board.put ("content", bdto.getContent ());
-				board.put ("user_id", bdto.getUser_id ());
-				board.put ("reg_date", bdto.getReg_date ());
-				
-				boardList.add (board);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println ("연결실패");
-		}finally {
-			if( rs != null ) try { rs.close(); } catch(Exception e) {}
-			if( ps != null ) try { ps.close (); } catch(Exception e) {}
-			if( con != null ) try { con.close (); } catch(Exception e) {}
-		}//end finally
-	}//end readAll
+
 }
