@@ -10,9 +10,7 @@ import e_oop.ScanUtil;
 
 public class JDBCBoard extends JDBCConnection{
 	static ArrayList<HashMap<String, Object>> boardList = new ArrayList<>();
-	static String columnTitle = "번호\t\t제목\t\t내용\t\t아이디\t\t생성시간";
 	public static void main (String[] args) {
-		
 		/*
 		 * 오라클 데이터베이스에 게시판 테이블을 생성하고, 게시판 프로그램을 만들어주세요.
 		 * 테이블 : TB_JDBC_BOARD
@@ -39,6 +37,27 @@ public class JDBCBoard extends JDBCConnection{
 			}//close switch
 		}
 
+	}
+	private static void delete(HashMap<String, Object> board){	
+		try {
+//			db 연결
+			con = DriverManager.getConnection (url,id,pw);
+//			쿼리작성
+			String sql = "DELETE FROM TB_JDBC_BOARD WHERE BOARD_NO = '"+ board.get ("board_no") +"'";
+//			쿼리실행
+			ps = con.prepareStatement (sql);
+//			쿼리결과 삽입
+			int result = ps.executeUpdate ();
+			System.out.println (result + "개 행이 삭제되었습니다.");
+			selectInsertAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+//			객체 반환
+//			if( rs != null ) try { rs.close (); } catch(Exception e) {}
+			if( ps != null ) try { ps.close (); } catch(Exception e) {}
+			if( con != null ) try { con.close (); } catch(Exception e) {}
+		}
 	}
 	
 	private static void insert() {
@@ -103,6 +122,9 @@ public class JDBCBoard extends JDBCConnection{
 			case 1:
 				update(board);
 				break;
+			case 2:
+				delete(board);
+				break;
 			case 0:
 				System.out.println ("목록으로");
 				break;
@@ -111,7 +133,6 @@ public class JDBCBoard extends JDBCConnection{
 	
 	private static void readAll(){
 		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-		System.out.println (columnTitle);
 //		ArrayList 출력
 		for(int i = boardList.size() - 1 ; i >= 0 ; i--) {
 			
@@ -170,22 +191,39 @@ public class JDBCBoard extends JDBCConnection{
 			
 			
 //			SELECT
-			String sql = " SELECT * FROM TB_JDBC_BOARD";
+			String sql = " SELECT board_no 번호, "
+					+ "title 제목, "
+					+ "content 내용, "
+					+ "user_id 이름, "
+					+ "reg_date 생성시간 "
+					+ "FROM TB_JDBC_BOARD ";
 			
 //			쿼리실행
 			ps = con.prepareStatement (sql);
 //			쿼리결과 삽입
 			rs = ps.executeQuery();
 			
+//			쿼리 컬럼 객체 가져오기
+			ResultSetMetaData md = rs.getMetaData ();
+			
+//			컬럼 개수 조회
+			int columnCount = md.getColumnCount ();
+			
+			for(int i = 1 ; i <= columnCount ; i++) {//컬럼 수 만큼 찍기
+//				컬럼 이름 출력
+				System.out.print (md.getColumnName(i) + "\t\t");
+			}
+			System.out.println ();
+			
 //			컬럼 내용 ArrayList 저장
 			while(rs.next()) {
 				HashMap<String, Object> board = new HashMap<>();	
 				BoardDTO bdto = new BoardDTO();
-				bdto.setBoard_no (rs.getInt("board_no"));
-				bdto.setTitle (rs.getString("title"));
-				bdto.setContent (rs.getString("content"));
-				bdto.setUser_id (rs.getString("user_id"));
-				bdto.setReg_date (rs.getString("reg_date"));
+				bdto.setBoard_no (rs.getInt("번호"));//board_no
+				bdto.setTitle (rs.getString("제목"));//title
+				bdto.setContent (rs.getString("내용"));//content
+				bdto.setUser_id (rs.getString("이름"));//user_id
+				bdto.setReg_date (rs.getString("생성시간"));//reg_date
 					
 				board.put ("board_no", bdto.getBoard_no ());
 				board.put ("title", bdto.getTitle ());
@@ -195,10 +233,7 @@ public class JDBCBoard extends JDBCConnection{
 				
 				boardList.add (board);
 			}
-			
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println ("연결실패");
 		}finally {
