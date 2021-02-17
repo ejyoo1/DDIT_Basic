@@ -80,9 +80,9 @@ public class JDBCUtil {
 			int columnCount = metaData.getColumnCount ();
 //			값을 추출
 			while(rs.next()) {//true
+				row = new HashMap<>();
 				for(int i = 1 ; i <= columnCount ; i++) {
 //					for문 안으로 들어왔다는 것은 데이터가 존재한다는 것이므로 해쉬맵 객체를 생성한다.
-					row = new HashMap<>();
 	//				추출한 내용을 HashMap<String, Object> 에 담아서 리턴함.
 	//				해쉬맵에 put 해서 저장(키:컬럼명, 값:컬럼값)
 	//				무엇을 가져왓는지 모르기에 getObject로 받음
@@ -101,7 +101,7 @@ public class JDBCUtil {
 	}
 //	한줄쿼리 물음표 있음
 	public Map<String, Object> selectOne(String sql, List<Object> param){
-		Map<String, Object> row = new HashMap<>();
+		Map<String, Object> row = null;
 		try {
 //			DB 연결
 			con = DriverManager.getConnection (url,id,pw);
@@ -121,6 +121,7 @@ public class JDBCUtil {
 			int columnCount = metaData.getColumnCount ();
 //			값을 추출
 			if(rs.next()) {
+				row = new HashMap<>();
 				for(int i = 1 ; i <= columnCount ; i++) {
 //					추출한 내용을 HashMap<String, Object>에 담아서 리턴함.
 //					해쉬맵에 put 해서 저장(키:커럼명, 값:컬럼값)
