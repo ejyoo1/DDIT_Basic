@@ -42,10 +42,17 @@ public class JDBCUtilTest {
 		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 		
 		
+//		이것을 조회할 때, 한줄을 조회하는 것으로 여러줄이 조회될 수 있음.
 		sql = " select * from member where mem_name = ? ";
 		param = new ArrayList<>();
 		param.add ("이쁜이");
 		map = jdbc.selectOne (sql,param);
+//		if(row ==null) {
+//			
+//		}
+//		if(row.size() == 0) {
+//			
+//		}
 		System.out.println (map.get ("MEM_ID"));//대소문자 구별함. 꼭 컬럼명과 동일하게 쓸것
 		System.out.println (map.get ("MEM_NAME"));
 		System.out.println ("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
@@ -54,6 +61,8 @@ public class JDBCUtilTest {
 		
 		sql = "INSERT INTO TB_JDBC_BOARD(BOARD_NO,TITLE,CONTENT,USER_ID,REG_DATE)\r\n"
 				+ "VALUES(BOARD_NO_SEQ.NEXTVAL,'db제목1','db제목2','ejyoo',sysdate)";
+//		사용자 전용 컬럼 표시할 때 sql
+//		sql = "insert into tb_jdbc_board values((select nvl(max(board_no),0)+1 from tb_jdbc_board),?,?,?,sysdate)";
 		int result = jdbc.update (sql);
 		if(result > 0) {
 			System.out.println (result + "개 행에 영향을 주었습니다.");

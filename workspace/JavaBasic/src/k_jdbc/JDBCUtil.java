@@ -71,14 +71,19 @@ public class JDBCUtil {
 //			DB연결
 			con = DriverManager.getConnection (url,id,pw);
 //			쿼리실행
+//			쿼리를 실행하고
 			ps = con.prepareStatement (sql);
 //			실행(select)
+//			몇개에 영향을 받았는지 결과값을 리턴
 			rs = ps.executeQuery ();
 //			resultSet에 무슨 데이터가 잇는지 모르기에 메타데이터를 얻고
 			ResultSetMetaData metaData = rs.getMetaData ();
 //			컬럼 수를 알면 데이터를 뽑을 수 잇음.
 			int columnCount = metaData.getColumnCount ();
 //			값을 추출
+//			만약에 여러줄이 조회되는 경우 이 부분에 여러줄의 결과를 가질 수 있는 로직을 구현해서 리턴을 제어하면 됨.
+//			무조건 한줄이라는 보장은 없음.
+//			여기서 만약에 문제가 생기면 여러줄의 조회가 된 테이블에서 가장 마지막에 조회된 테이블이 출력될것임.
 			while(rs.next()) {//true
 				row = new HashMap<>();
 				for(int i = 1 ; i <= columnCount ; i++) {
@@ -120,7 +125,7 @@ public class JDBCUtil {
 //			컬럼 수를 알면 데이터를 뽑을 수 있음
 			int columnCount = metaData.getColumnCount ();
 //			값을 추출
-			if(rs.next()) {
+			while(rs.next()) {
 				row = new HashMap<>();
 				for(int i = 1 ; i <= columnCount ; i++) {
 //					추출한 내용을 HashMap<String, Object>에 담아서 리턴함.
