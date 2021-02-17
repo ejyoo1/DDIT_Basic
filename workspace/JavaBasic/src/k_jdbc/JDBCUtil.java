@@ -60,8 +60,13 @@ public class JDBCUtil {
 	 * 
 	 * */
 //	한줄 쿼리
-	Map<String, Object> selectOne(String sql){
-		Map<String, Object> row = new HashMap<>();
+//	sql을 파라미터로 가져와서 디비에 연결한 뒤 쿼리를 실행해서 한줄 결과를 가져온 뒤 맵에 담아서 리턴
+	public Map<String, Object> selectOne(String sql){//다른 패키지에도 사용할 수 있어야 되므로 'public' 접근 제어자를 붙임
+//		쿼리를 조회했는데 한줄이 무조건 조회 될 수 있다는 보장이 없으므로, 여기에선 null을 하고 실제 데이터가 잇을 때(rs.next() = true)일 때, 객체를 생성하도록 한다.
+//		나중에 쿼리를 사용 시 결과값이 정상적으로 조회됐는지 확인을 하는데 if(row==null){}을 하여 조회되지 않는 경우를 조회할 수 있다.
+//		그런데 이 부분을 null을 하지않고 객체를 생성한 경우 정상적으로 조회됐는지의 여부를 if(row.size() == 0){}로 확인해야된다.
+//		if(row.size()==0){}보다는 if(row==null){}이 더 직관적임.
+		Map<String, Object> row = null;
 		try {
 //			DB연결
 			con = DriverManager.getConnection (url,id,pw);
@@ -74,12 +79,14 @@ public class JDBCUtil {
 //			컬럼 수를 알면 데이터를 뽑을 수 잇음.
 			int columnCount = metaData.getColumnCount ();
 //			값을 추출
-			if(rs.next()) {//true
+			while(rs.next()) {//true
 				for(int i = 1 ; i <= columnCount ; i++) {
+//					for문 안으로 들어왔다는 것은 데이터가 존재한다는 것이므로 해쉬맵 객체를 생성한다.
+					row = new HashMap<>();
 	//				추출한 내용을 HashMap<String, Object> 에 담아서 리턴함.
 	//				해쉬맵에 put 해서 저장(키:컬럼명, 값:컬럼값)
 	//				무엇을 가져왓는지 모르기에 getObject로 받음
-					row.put (metaData.getColumnName (i), rs.getObject (i));
+					row.put (metaData.getColumnName (i), rs.getObject (i));//접근 시 1번부터 시작함.
 				}//close for
 			}//close if
 		} catch (SQLException e) {
@@ -93,7 +100,7 @@ public class JDBCUtil {
 		return row;		
 	}
 //	한줄쿼리 물음표 있음
-	Map<String, Object> selectOne(String sql, List<Object> param){
+	public Map<String, Object> selectOne(String sql, List<Object> param){
 		Map<String, Object> row = new HashMap<>();
 		try {
 //			DB 연결
@@ -133,7 +140,7 @@ public class JDBCUtil {
 	}
 	
 //	물음표가 없는 여러줄 쿼리 select
-	List<Map<String, Object>> selectList(String sql){
+	public List<Map<String, Object>> selectList(String sql){
 		List<Map<String, Object>> list = new ArrayList<>();
 		try {
 //			DB 연결
@@ -174,7 +181,7 @@ public class JDBCUtil {
 	}
 //	해야될것? 
 //	DB 연결 -> 넘어온 쿼리 실행 -> 물음표가 있으니 list param에 있는것을 sql에 삽입 -> result 셋이 왓으면 값을 추출한 뒤 -> list<map>형식으로 만들어서 리턴을 함.
-	List<Map<String, Object>> selectList(String sql, List<Object> param){
+	public List<Map<String, Object>> selectList(String sql, List<Object> param){
 //		리턴타입에 맞는 객체 생성
 		List<Map<String, Object>> list = new ArrayList<>();
 		try {
@@ -219,7 +226,7 @@ public class JDBCUtil {
 		return list;
 	}
 	
-	int update(String sql) {
+	public int update(String sql) {
 //		리턴 타입 변수 생성
 		int result = 0;
 		try {
@@ -243,7 +250,7 @@ public class JDBCUtil {
 		return result;
 	}
 	
-	int update(String sql, List<Object> param) {
+	public int update(String sql, List<Object> param) {
 		int result = 0;
 		try {
 //			db 연결
