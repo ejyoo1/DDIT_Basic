@@ -109,7 +109,7 @@ public class BoardService {
 			case 1: updateBoard(board_no); break;
 //			81. 게시글 삭제할 번호를 담은 삭제 메서드 호출
 			case 2: deleteBoard(board_no); break;
-			case 0: userLogout(); return View.HOME;
+			case 0: userLogout(); break;
 		}
 		
 //		조회나 삭제가 끝나면 목록으로 돌아오도록
