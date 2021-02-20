@@ -50,7 +50,7 @@ public class BoardService {
 		}
 //		46.게시물을 가지고 사용자가 어떤 행위를 할지 결정한다.
 		System.out.println("=======================================");
-		System.out.println("1.조회\t2.등록\t0.로그아웃");
+		System.out.println("1.조회\t2.등록\t3.로그아웃");
 		System.out.print("입력>");
 		int input = ScanUtil.nextInt();
 		
@@ -66,7 +66,7 @@ public class BoardService {
 //		47. 게시글 등록 메서드 호출
 		case 2: createBoard(); break;
 //		92. 로그아웃
-		case 0: userLogout(); break;
+		case 3: userLogout(); break;
 		}
 		
 //		목록으로 돌아오도록

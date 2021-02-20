@@ -5,6 +5,7 @@ import java.util.Map;
 import service.BoardService;
 import service.UserService;
 import util.ScanUtil;
+import util.VerifiedUtil;
 import util.View;
 
 public class Controller {
@@ -33,7 +34,8 @@ public class Controller {
 	private UserService userService = UserService.getInstance();
 //	보드 서비스 객체 생성
 	private BoardService boardService = BoardService.getInstance();
-	
+//	유효성 검사 서비스 객체 생성
+	private VerifiedUtil verifiedUtil = VerifiedUtil.getInstance ();
 //	2. 프로그램 시작 시 start()메서드가 시작된다.
 	private void start () {
 //		3. View.HOME 번호를 넣고 시작한다.
@@ -61,22 +63,27 @@ public class Controller {
 	private int home() {
 //		8. 사용자는 메뉴를 선택한다.
 		System.out.println("--------------------------------------");
-		System.out.println("1.로그인\t2.회원가입\t0.프로그램 종료");
+		System.out.println("1.로그인\t2.회원가입\t3.프로그램 종료");
 		System.out.println("--------------------------------------");
 		System.out.print("번호 입력>");
 		
 //		9. 수행할 행위를 번호로 입력을 받는다.
 		int input = ScanUtil.nextInt();
-//		10. 사용자가 입력한 번호를 기준으로 뷰를 세팅한다.
-		switch (input) {
-			case 1: return View.LOGIN;
-//			11. start 메서드에게 회원가입 뷰 번호를 리턴한다.
-			case 2: return View.JOIN;
-			case 0:
-				System.out.println("프로그램이 종료되었습니다.");
-				System.exit(0);
+		boolean flag = verifiedUtil.verifiedMenu (3, input);
+		
+		if(flag) {
+	//		10. 사용자가 입력한 번호를 기준으로 뷰를 세팅한다.
+			switch (input) {
+				case 1: return View.LOGIN;
+	//			11. start 메서드에게 회원가입 뷰 번호를 리턴한다.
+				case 2: return View.JOIN;
+				case 3:
+					System.out.println("프로그램이 종료되었습니다.");
+					System.exit(0);
+			}
+		}else {
+			System.out.println ("잘못 입력하셨습니다.");
 		}
-//		사용자가 입력한 번호가 없는경우 홈 화면을 리턴함.
 		return View.HOME;
 	}
 	
